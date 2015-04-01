@@ -1,0 +1,10 @@
+<?php
+		$sqlProcesos = "SELECT * FROM PRODUCTO INNER JOIN PRODUCTOPIEZA ON PRODUCTO.idPRODUCTO = PRODUCTOPIEZA.PRODUCTO_idPRODUCTO INNER JOIN PIEZA ON PRODUCTOPIEZA.PIEZA_idPIEZA = PIEZA.idPIEZA";
+		echo $sqlProcesos;
+
+			$sqlPieza= "SELECT * FROM PIEZA";
+	$sqlconsulta3=mysqli_query($conn,$sqlPieza);
+	while ($filapieza = mysqli_fetch_array($sqlconsulta3)) 
+	{
+		echo '<td>',$filapieza[''];
+	}
