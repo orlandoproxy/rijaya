@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-03-2015 a las 22:39:53
+-- Tiempo de generación: 09-04-2015 a las 02:59:05
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -97,6 +97,30 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `password` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `activador` int(11) NOT NULL,
   `numsuc` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `password`, `activador`, `numsuc`) VALUES
+(1, 'paco', '12345', 1, 5),
+(2, 'pepe', '123456', 1, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE IF NOT EXISTS `ventas` (
+  `num_venta` int(11) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `id_empleado` int(11) NOT NULL,
+  `id_productos` int(11) NOT NULL,
+  `cantidad` double NOT NULL,
+  `costo` double NOT NULL,
+  `id_sucursal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -140,6 +164,12 @@ ALTER TABLE `usuarios`
  ADD PRIMARY KEY (`id_usuario`);
 
 --
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+ ADD KEY `id_empleado` (`id_empleado`,`id_productos`,`id_sucursal`), ADD KEY `id_productos` (`id_productos`), ADD KEY `id_sucursal` (`id_sucursal`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -162,7 +192,7 @@ MODIFY `id_sucursal` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --
@@ -196,6 +226,14 @@ ADD CONSTRAINT `telempleados_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `emp
 --
 ALTER TABLE `telesucursales`
 ADD CONSTRAINT `telesucursales_ibfk_1` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`id_sucursal`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `ventas`
+--
+ALTER TABLE `ventas`
+ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`) ON UPDATE CASCADE,
+ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_productos`) REFERENCES `productos` (`id_productos`) ON UPDATE CASCADE,
+ADD CONSTRAINT `ventas_ibfk_3` FOREIGN KEY (`id_sucursal`) REFERENCES `sucursales` (`id_sucursal`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
