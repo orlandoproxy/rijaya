@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Nuevo Material</title>
+	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+	<script type="text/javascript" src="../../../js/jquery.js" ></script>
+	<script type="text/javascript" src="../js/Insertar.js"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<h1>Nuevo Material</h1>
+		<div class="form-horizontal">
+			<div class="form-gropup">
+				<label for="Clave" class="col-lg-2 control-label">Clave</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="Clave" required>
+				</div>
+				<br>
+			</div>
+			<div class="form-group">
+				<label for="Nombre" class="col-lg-2 control-label">Nombre</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="Nombre" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Categoria" class="col-lg-2 control-label">Categoria</label>
+				<div class="col-lg-10">
+					<select id="Categoria" class="form-control">
+						<option>Consumo Interno</option>
+						<option>Materia Prima</option>
+						<option>Producto Comercializado</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<a id="ingresar" class="btn btn-success">Guardar</button>
+					<a class="btn btn-warning" href="../index.php">Cancelar</a>
+
+
+			</div>
+		</div>
+		<div id="alerta"></div>
+	</div>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ $q=$_POST['q'];
 $limite = 25;
 $pag=0;
 //pagina pedida
+$pag=0;
 $pag = (int) $_GET["pag"];
 if ($pag < 1) 
 {

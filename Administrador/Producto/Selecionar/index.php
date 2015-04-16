@@ -47,7 +47,7 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 <br>
 <h3>Piezas</h3>
 <div class="table-responsive">
-<table class="table">
+<table class="table table-condensed">
 	<tr>
 		<td>Cantidad</td>
 		<td>Nombre</td>

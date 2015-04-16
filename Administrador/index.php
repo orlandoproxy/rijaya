@@ -3,7 +3,9 @@ include('../clases/conexion.php');
 //include('../clases/redireccion.php');
 echo $_SESSION['Nombreusu'];
 ?>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="esp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Documentos</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 </head>

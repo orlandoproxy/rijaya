@@ -38,7 +38,7 @@ include('../../clases/conexion.php');
   <input class="glyphicon glyphicon-search" type="text" id="bus" name="bus" onkeyup="loadXMLDoc()" Placeholder="Buscar" />
 
     <div >
-    <table  class="table">
+    <table  class="table table-condensed">
     <thead>
       <tr>
       <td>Clave</td>

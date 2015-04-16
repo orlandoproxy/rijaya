@@ -1,0 +1,38 @@
+<html lang="esp">
+<head>
+	<title>Seguimiento Procesos</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css">
+	<SCRIPT TYPE="text/javascript" src="../js/jquery.js"></SCRIPT>
+	<script type="text/javascript" src="js/buscar.js"></script>
+</head>
+<body>
+	<a>Fase de seguimiento  (Prototipo 1.0)</a>
+	<div class="container">
+		<a href="Insertar/index.html" class="btn btn-primary">Insertar Nuevo</a>
+		<br>
+
+	</div>
+	<div class="container">
+		<input class="glyphicon glyphicon-search" type="text" id="bus" name="bus" onkeyup="loadXMLDoc()" Placeholder="Buscar" />
+		<div class="table-responsive">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<td>N° Pedido</td>
+						<td>Fecha Entrega</td>
+						<td>Dias Restantes</td>
+						<td>Estatus</td>
+						<td>Progreso</td>
+						<td>Referencia Rijaya Comercial</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody id="campo"></tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

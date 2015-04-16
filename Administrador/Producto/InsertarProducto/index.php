@@ -86,7 +86,7 @@ $Catego=mysqli_query($conn,$cadena);
 		</div>
 		<div class="container">
 				<button id="insertar" class="btn btn-success">Continuar</button>
-				<button class="btn btn-warning">Cancelar</button>
+				<a class="btn btn-warning" href="../index.php">Cancelar</a>
 			</div>
 	</div>
 </body>

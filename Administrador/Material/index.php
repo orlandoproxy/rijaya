@@ -30,7 +30,7 @@ include('../../clases/conexion.php');
 <br>
 <br>
 <p>
-  <a href="#" class="btn btn-primary btn-lg">Nuevo Material</a>
+  <a href="InsertarMaterial/" class="btn btn-primary btn-lg">Nuevo Material</a>
 </p>
   <input class="glyphicon glyphicon-search" type="text" id="bus" name="bus" onkeyup="loadXMLDoc()" Placeholder="Buscar" />
 
