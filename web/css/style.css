@@ -1,3 +1,4 @@
+/*
 body {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -37,4 +38,37 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+*/
+body
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: #F9F9FB;
+}
+
+#login
+{
+    width: 260px;
+    background-color: #222222;
+    color: white;
+    margin: 15em auto;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+#login table
+{
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+}
+#login button
+{
+    border: none;
+    background-color: red;
+    border-radius: 5px;
+    width: 90%;
+    height: 35px;
+    font-weight: bold;
+    color:white;
 }

@@ -1,0 +1,38 @@
+<!--<div class="container">
+    <div class="form-signin">
+	<h2 >Porfavor Autentifiquese</h2>
+        <label for="Usuario" class="sr-only">Usuario</label>
+        <input class="form-control" type="text" id="Usuario" name="usuario" required placeholder="Usuario">
+        <label for="Contra" class="sr-only" >Password</label>
+        <input type="text" id="Contra" class="form-control" name="contra" required placeholder="Contraseña" >
+        <a id="boton" class="btn btn-lg btn-primary btn-block">Acceder</a>
+    </div>
+</div>-->
+<article id="login">
+    <form action="web/handshake/validacion.php" method="post" >
+        <table>
+            <caption>Login</caption>
+            <tr>
+                <td>
+                    <label>Usuario</label>
+                </td>
+                <td>
+                    <input type="text" name="user" placeholder="Introduce tu usuario" pattern=".{4,20}" required />
+                </td>  
+            </tr>
+            <tr>
+                <td>
+                    <label>Password</label>
+                </td>
+                <td>
+                    <input type="password" name="password" placeholder="Introduce tu password" pattern=".{5,20}" required />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Acceder</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</article>
