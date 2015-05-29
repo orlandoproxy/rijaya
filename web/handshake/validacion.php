@@ -9,6 +9,6 @@ if($sesion = $Validacion->obtenerSession($_POST['user'], $_POST['password']))
 }
 else
 {
-    $mensaje = array("mensaje"=>"no inicio session");
+    $mensaje = array("mensaje"=>"*El usuario o password que introdujo no es correcto, por favor vuelva a intentarlo");
     print_r(json_encode($mensaje));    
 }
