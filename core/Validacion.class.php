@@ -6,12 +6,14 @@ class Validacion extends Filtrador
 {
     private $Usuario;
     private $Password;
+    private $Codigo;
     private $Conexion;
     
     public function __construct()
     {
         $this->Usuario = "";
         $this->Password = "";
+        $this->Codigo = "";
         parent::__construct();
         $Proxy = new Proxy();
         $this->Conexion = $Proxy->conexionSql();
@@ -19,15 +21,20 @@ class Validacion extends Filtrador
     
     private function obtenerUsuario($usuario)
     {
-        $this->Usuario = $this->filtrarVariable($usuario);
+        $this->Usuario = $this->filtrarVariable($this->limitarCadena($usuario, 5, 20));
     }
     
     private function obtenerPassword($password)
     {
-        $this->Password = $this->filtrarVariable($password);
+        $this->Password = $this->filtrarVariable($this->limitarCadena($password, 5, 20));
     }
     
-    public function obtenerSession($usuario, $password)
+    private function obtenerCodigo($codigo)
+    {
+        $this->Codigo = $this->filtrarVariable($this->limitarCadena($codigo, 5, 10));
+    }
+    
+    public function obtenerSessionUser($usuario, $password)
     {
         $this->obtenerUsuario($usuario);
         $this->obtenerPassword($password);
@@ -35,9 +42,24 @@ class Validacion extends Filtrador
         $Consultar->execute();
         if($datos = $Consultar->fetchAll())
         {
-            return True;
+            return TRUE;
         }
         
         return FALSE;
+    }
+    
+    public function obtenerSessionOpera($codigo)
+    {
+        $this->obtenerCodigo($codigo);
+        $Consultar = $this->Conexion->prepare("SELECT codigo FROM empleados WHERE codigo='$this->Codigo'");
+        $Consultar->execute();
+        if($datos = $Consultar->fetchAll())
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
     }
 }

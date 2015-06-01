@@ -22,8 +22,29 @@ class Filtrador
 	$valor = str_ireplace("?","",$valor);
 	$valor = str_ireplace("=","",$valor);
 	$valor = str_ireplace("&","",$valor);
+        $valor = str_ireplace("'","",$valor);
+        $valor = str_ireplace("<","",$valor);
+        $valor = str_ireplace(">","",$valor);
+        $valor = str_ireplace("{","",$valor);
+        $valor = str_ireplace("}","",$valor);
+        $valor = str_ireplace("¿","",$valor);
+        $valor = str_ireplace(":","",$valor);
+        $valor = str_ireplace("*","",$valor);
+        $valor = str_ireplace("UNION","",$valor);
+        $valor = str_ireplace("SCRIPT","",$valor);
         $valor = addslashes($valor);
 	return $valor;
+    }
+    protected function limitarCadena($cadena, $min, $max)
+    {
+        if(strlen($cadena)>=$min && strlen($cadena)<=$max)
+        {
+            return $cadena;
+        }
+        else
+        {
+            return " ";
+        }
     }
 }
 ?>
