@@ -51,7 +51,7 @@ class Validacion extends Filtrador
     public function obtenerSessionOpera($codigo)
     {
         $this->obtenerCodigo($codigo);
-        $Consultar = $this->Conexion->prepare("SELECT codigo FROM empleados WHERE codigo='$this->Codigo'");
+        $Consultar = $this->Conexion->prepare("SELECT codigo FROM empleados WHERE codigo='$this->Codigo' and cargo='operador'");
         $Consultar->execute();
         if($datos = $Consultar->fetchAll())
         {

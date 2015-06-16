@@ -3,17 +3,19 @@ $(function()
     var user = "";
     var password = "";
     var codigo = "";
+    var session = "";
     if(document.getElementById("codigo")!== null)
     {
-        document.getElementById("codigo").focus();   
+        document.getElementById("codigo").focus();
     }
     $("#access").click(function()
     {
         user = filtrarVariable(limitarLogitud($("#user").val(), 5, 20));
         password = filtrarVariable(limitarLogitud($("#password").val(), 5, 20));
+        session = $("#session").is(':checked');
         if(user && password)
         {
-            $.post("web/handshake/validacion.php", {user:user, password:password},function(data)
+            $.post("web/handshake/validacion.php", {user:user, password:password, session:session},function(data)
             {
                 $("#mensaje").css("display","inline");
                 $("#loginuser").css("height","350px");
@@ -25,9 +27,10 @@ $(function()
     {
         
         codigo = filtrarVariable(limitarLogitud($("#codigo").val(), 5, 20));
+        session = $("#session").is(':checked');
         if(codigo)
         {
-            $.post("web/handshake/validacion.php", {codigo:codigo},function(data)
+            $.post("web/handshake/validacion.php", {codigo:codigo, session:session},function(data)
             {
                 $("#mensaje").css("display","inline");
                 $("#loginopera").css("height","271px");

@@ -6,8 +6,7 @@ if(isset($_POST['user']) && isset($_POST['password']))
 {
     if($sesion = $Validacion->obtenerSessionUser($_POST['user'], $_POST['password']))
     {
-        $mensaje = array("mensaje"=>"inicio session");
-        print_r(json_encode($mensaje));
+        
     }
     else
     {
