@@ -54,7 +54,7 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 		<td>Medidas</td>
 		<td>Material</td>		
 					<?php
-					$sqlConsulPro="SELECT Nombre FROM `PROCESO`";
+					$sqlConsulPro="SELECT Nombre FROM `PROCESO` WHERE AREAPROCESO_idAREAPROCESO='1'";
 					$respuestaProceso=mysqli_query($conn,$sqlConsulPro);					
 					while ($filaProc=mysqli_fetch_array($respuestaProceso)) 
 					{
@@ -93,7 +93,7 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 						echo '<td>';
 						echo $nombrematerial['Nombre'];
 						echo '</td>';
-						$sqlProcesoBu="SELECT idPROCESO FROM PROCESO";
+						$sqlProcesoBu="SELECT idPROCESO FROM PROCESO WHERE AREAPROCESO_idAREAPROCESO='1'";
 						$sqlconsulta7=mysqli_query($conn,$sqlProcesoBu);
 
 						while ($filaProceso=mysqli_fetch_array($sqlconsulta7)) 
@@ -128,8 +128,58 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 				?>
 				
 </table>
+<h2>Ensamble General</h2>
+<div>
+	<?php 
+	$ConsultaEnsamble="SELECT *FROM ENSAMBLE WHERE PRODUCTO_idPRODUCTO='$idproducto'";
+	$queryEnsamble=mysqli_query($conn,$ConsultaEnsamble);
+	$fila=mysqli_fetch_assoc($queryEnsamble);
+	?>
+	<label>Nombre:<?php echo $fila['Nombre'];  ?></label>
+	<h2>Datos Subensamble</h2>
+	<?php 
+	$idEnsamble=$fila['idENSAMBLE'];
+	$ConsultaSubensamble="SELECT * FROM SUBENSAMBLE WHERE ENSAMBLE_idENSAMBLE='$idEnsamble' ";
+	$querySubensamble=mysqli_query($conn,$ConsultaSubensamble);
+
+	while ($resul=mysqli_fetch_array($querySubensamble)) 
+	{
+		echo '<h4>Nombre: '.$resul['Nombre'].'</h4>';
+		echo '<br>';
+		echo '<label>Estatus: '.$resul['Estatus'].'</label>';
+		echo '<br>';
+		echo '<h3>Piezas</h3>';
+		$idSUBENSAMBLEPIEZA=$resul['idSubensamble'];
+		$SElecionarPiezas="SELECT * FROM SUBENSAMBLEPIEZA INNER JOIN PIEZA ON SUBENSAMBLEPIEZA.PIEZA_idPIEZA=PIEZA.idPIEZA WHERE SUBENSAMBLE_idSubensamble='$idSUBENSAMBLEPIEZA'";
+		$querySubPiezas=mysqli_query($conn,$SElecionarPiezas);
+		echo '<table class="table">
+			<thead>
+				<tr>
+					<td>Nombre Pieza</td>
+					<td>Procesos Ensamble</td>
+				</tr>
+			</thead>
+			<tbody>';
+		while ($sub=mysqli_fetch_array($querySubPiezas)) 
+		{
+			echo '<tr>';
+			echo '<td>'.$sub['Nombre'].'</td>';
+			echo '<tr>';
+
+			# code...
+		}
+		echo '</tbody>';
+		echo '</table';
+	}
+	?>
+			
+		
+	
+</div>
 </div>
 <a class="btn btn-success" href="../index.php">Continuar</a>
 </body>
 </html>
-
+<?php
+mysqli_close($conn);
+ ?>

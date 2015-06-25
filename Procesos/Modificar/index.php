@@ -1,24 +1,33 @@
 <?php
 include('../../clases/conexion.php');
 session_start();
-if (isset($_SESSIO['id'])) 
+if (isset($_SESSION['id'])) 
 {
-	header('Location: ../ index.html');
+	$id = $_SESSION['id'];
 }
 else
 {
-	$id = $_SESSION['id'];
+	if (isset($_GET['ID'])== FALSE) 
+	{
+		header('Location: ../index.html');
+	}
+	else
+	{
+		$id=$_GET['ID'];
+	}
+	$_SESSION['idPedido'] = $id;
 }
 $consulta = "SELECT * FROM REMPLAZO WHERE idPEDIDO = '$id'";
 $query=mysqli_query($conn,$consulta);
 $fila = mysqli_fetch_array($query);
 
-
+unset($_SESSION['id']);
+unset($_GET['ID']);
 ?>
 <html lang="esp">
 <head>
 	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" src="../js/insertar.js"></script>
+	<script type="text/javascript" src="js/modificar.js"></script>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insertar Control</title>

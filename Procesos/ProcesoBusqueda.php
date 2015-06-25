@@ -24,6 +24,8 @@ while ($filaProcesp=mysqli_fetch_array($queryProceso))
 	</div>
 	</td>';
 	echo '<td>'.$filaProcesp['ReferenciaVentas'].'</td>';
+	echo '<td><a href="Seleccionar/index.php?ID='.$filaProcesp['idPEDIDO'].'">Seleccionar</a></td>';
+	echo '<td><a href="Modificar/index.php?ID='.$filaProcesp['idPEDIDO'].'">Modificar</a></td>';
 	echo '</tr>';
 
 

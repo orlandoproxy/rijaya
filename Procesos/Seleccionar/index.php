@@ -1,25 +1,36 @@
 <?php
 include('../../clases/conexion.php');
 session_start();
-if (isset($_SESSION['id']) == null) 
+if (isset($_SESSION['id'])) 
 {
-	header('Location: ../index.html');
+	$id = $_SESSION['id'];
+
 }
 else
 {
-	$id= $_SESSION['id'];
+	if (isset($_GET['ID'])) 
+	{
+		$id=$_GET['ID'];
+	}
+	else
+	{
+		header('Location: ../ index.html');
+	}
 }
+echo $id;
 $consulta= "SELECT * FROM REMPLAZO WHERE idPEDIDO = '$id'";
 $query1=mysqli_query($conn,$consulta);
 $fila=mysqli_fetch_array($query1);
 
+unset($_SESSION['id']);
+unset($_GET['ID']);
 
 ?>
 <html lang="esp">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
-	<title>Informcacion General</title>
+	<title>Informacion General</title>
 </head>
 <body>
 	<div class="container">

@@ -33,10 +33,17 @@ echo '</tbody>';
 echo '</table>';
 $totalpag = ceil($total/$limite);
 $links = array();
+echo '<table>';
+echo '<tr>';
 for ($i=1; $i<=$totalpag ; $i++) 
 {
 	$links[] = "<a href=\"?pag=$i\">$i</a>";
 }
-echo implode(" - ", $links);
-
+//echo implode(" - ", $links);
+foreach ($links as $key => $value) 
+{
+	echo '<td>'.$value.'</td>';
+}
+echo '</tr>';
+echo '</table>';
 ?>

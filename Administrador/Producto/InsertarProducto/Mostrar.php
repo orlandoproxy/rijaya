@@ -33,22 +33,8 @@ if (is_array($_REQUEST)==true)
 		$idMaterial = $ListaMaterial['idMaterial'];
 		
 	}
-	else
-	{
-		echo "material incorrecto";
-		echo '<br/>';
-	}
 	$selecPieza = "SELECT * FROM PIEZA WHERE Nombre='$nombre' && MATERIAL_idMATERIAL='$idMaterial' && Medida1='$medida1' && Medida2='$medida2' && Medida3='$medida3' ";
 	$ResPieza = mysqli_query($conn,$selecPieza);
-	if (mysqli_num_rows($ResPieza)>0) 
-	{
-		Echo "la pieza existe";
-		echo '<br/>';
-
-	}
-	else
-	{
-
 		$insertarpieza=mysqli_query($conn,"INSERT INTO PIEZA (Nombre,MATERIAL_idMATERIAL,Medida1,Medida2,Medida3) VALUES ('$nombre','$idMaterial','$medida1','$medida2','$medida3')");
 		$ResPieza = mysqli_query($conn,$selecPieza);
 		$idpieza= mysqli_fetch_array($ResPieza);
@@ -74,11 +60,11 @@ if (is_array($_REQUEST)==true)
 		$cadena= array_values($cadena);
 
 
-	}
+	
 	}
 	
-
-	header('Location:../Seleccionar/');
+	
+	header('Location:Ensamble.php');
 }
 
 ?>

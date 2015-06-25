@@ -14,16 +14,15 @@ $Catego=mysqli_query($conn,$cadena);
 	<script src="js/Insertar.js"></script>
 </head>
 <body>
+	<div class="container">
 	<h2>Nuevo Producto</h2>
 	<div class="form-horizontal">  
-		<div class="container">
 			<div class="form-group">
 				<label for="Clave" class="col-lg-2 control-label">Clave</label>
 				<div class="col-lg-10">
 					<input type="text" id="Clave" class="form-control" name="Clave" placeholder="Clave del Nuevo Producto"  />
 				</div>
 			</div>
-			<div class="container">
 			<div class="form-group">
 				<label for="Nombre" class="col-lg-2 control-label">Nombre</label>
 				<div class="col-lg-10">
@@ -70,24 +69,37 @@ $Catego=mysqli_query($conn,$cadena);
 
 				</div>
 			</div>
-			<div class="col-lg-10">
-
-				<label col-lg-2 control-label class="col-lg-2 control-label">Medidas:</label>
-				<div class="col-lg-10">
-					
-					<input type="text" id="Medida1" >
-					<label > * </label>					
-					<input type="text" id="Medida2" >
-					<label> * </label>
-					<input type="text" id="Medida3">					
-				</div>
-			</div>
+						<table class="form-group">
+							<tr>
+								<label col-lg-2 control-label class="col-lg-2 control-label">Medidas:</label>
+							</tr>
+							<tr>
+								<td>
+									<input class="form-control" type="text" id="Medida1" required placeholder="Medida 1">
+								</td>
+								<td>
+									<label> x </label>
+								</td>
+								<td>
+									<input class="form-control" type="text" id="Medida2" required placeholder="Medida 2">
+								</td>
+								<td>
+									<label> x </label>
+								</td>
+								<td>
+									<input class="form-control" type="text" id="Medida3" required placeholder="Medida 2">	
+								</td>	
+							</tr>
+						</table>
 			<div id="mensaje" ></div>
 		</div>
 		<div class="container">
 				<button id="insertar" class="btn btn-success">Continuar</button>
 				<a class="btn btn-warning" href="../index.php">Cancelar</a>
-			</div>
+		</div>
 	</div>
 </body>
+<?php
+mysqli_close($conn);
+?>
 </html>

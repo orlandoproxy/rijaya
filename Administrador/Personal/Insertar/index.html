@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+  <SCRIPT TYPE="text/javascript"></SCRIPT>
+<title>Insertar nuevo</title>
+<div class="container">
+	<form method="post" action="guardar.php">
+		<div class="form-group">
+			<label for="Nombre">Nombre</label>
+			<input type="text" class="form-control" id="Nombre" name="nombre" placeholder="Nonbre Usuario" required>
+		</div>
+		<div class="form-group">
+			<label form="ApellidoPa">Apellido Paterno</label>
+			<input type="text" class="form-control" id="ApellidoPa" name="apellidopa" placeholder="Apellido Paterno" required>
+		</div>
+		<div class="form-group">
+			<label for="ApellidoMa">Apellido Materno</label>
+			<input type="text" class="form-control" id="ApellidoMa" name="apellidoma" placeholder="Apellido Materno" required>
+		</div>
+		<div class="form-group">
+			<label for="NombreUsu">Nombre Usuario</label>
+			<input type="text" class="form-control" id="NombreUsu" name="nombreusuario" placeholder="Nombre Usuario" required>
+		</div>
+		<div class="form-group">
+			<label for="Contra">Contraseña</label>
+			<input type="password" class="form-control" id="Contra" name="contra" required>
+		</div>
+		<div class="form-group">
+			<label form="Estatus">Estatus</label>
+			<select id="Estatus" name="estatus" class="form-control">
+				<option>Activo</option>
+				<option>Inactivo</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="Categoria">Categoria</label>
+			<select id="Categoria" name="categoria" class="form-control">
+				<option value="1">Administrador</option>
+				<option value="2">Jefe de Produccion</option>
+				<option value="3">Contador</option>
+				<option value="4">Vendedor</option>
+				<option value="5">Operador</option>
+			</select>
+		</div>
+		<input type="submit" class="btn btn-success" text="Enviar">
+		<a class="btn btn-warning" href="../">Cancelar</a>
+	</form>
+</div>
+</head>
+</html>

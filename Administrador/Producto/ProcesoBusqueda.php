@@ -43,4 +43,5 @@ else
 	echo '</tbody>';
 	echo '</table>';
 }
+mysqli_close($conn);
 ?>
