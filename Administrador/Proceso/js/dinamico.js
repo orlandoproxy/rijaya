@@ -1,12 +1,11 @@
-
-function loadXMLDoc(val)
+function loadXMLDoc()
 {
 var xmlhttp;
-var valor=val;
 
-var n=document.getElementById('clave_'+val).value;
+var n=document.getElementById('buscar').value;
+
 if(n==''){
-document.getElementById("nombre_"+val).innerHTML="";
+document.getElementById("contenedor").innerHTML="";
 return;
 }
 
@@ -22,13 +21,10 @@ xmlhttp.onreadystatechange=function()
 {
 if (xmlhttp.readyState==4 && xmlhttp.status==200)
 {
-document.getElementById("nombre_"+val).innerHTML=xmlhttp.responseText;
+document.getElementById("contenedor").innerHTML=xmlhttp.responseText;
 }
 }
-
-xmlhttp.open("POST","busqueda.php",true);
+xmlhttp.open("POST","procesobusqueda.php",true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xmlhttp.send("q="+n);
-
 }
-
