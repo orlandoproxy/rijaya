@@ -16,7 +16,7 @@
             <li><a href="../Material">Material</a></li>
             <li><a href="../Personal">Personal</a></li>
             <li class="active"><a href="#">Roles</a></li>
-            <li><a href="#">Areas/Proceso</a></li>
+            <li><a href="../Configuracion">Configuracion</a></li>
             <li><a href="../../clases/cerrar.php">Salir</a></li>
 
           </ul>
@@ -52,14 +52,14 @@
         include("../../clases/conexion.php");
         $ConsultaTabla="SELECT PERSONAL.Nombre,PROCESO.Nombre AS NombreProceso, ROLES.FechaEntrada, ROLES.FechaSalida FROM `ROLES` INNER JOIN PERSONAL ON PERSONAL_idPERSONAL=idPERSONAL INNER JOIN PROCESO ON idPROCESO=PROCESO_idPROCESO";
         $queryTabla=mysqli_query($conn,$ConsultaTabla);
-        while ($filatabla=mysqli_fetch_array($queryTabla)) 
+        while ($filatabla=mysqli_fetch_array($queryTabla))
         {
           echo '<tr>';
           echo '<td>'.$filatabla['Nombre'].'</td>';
           echo '<td>'.$filatabla['NombreProceso'].'</td>';
           echo '<td>'.$filatabla['FechaEntrada'].'</td>';
           echo '<td>'.$filatabla['FechaSalida'].'</td>';
-          if (count($filatabla['FechaSalida'])>0) 
+          if (count($filatabla['FechaSalida'])>0)
           {
             echo '<td></td>';
             echo '<td></td>';

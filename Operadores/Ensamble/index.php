@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION['idproceso'])) 
 {
 	$proceso=$_SESSION['idproceso'];
+	echo $proceso;
 }
 else
 {
@@ -10,7 +11,6 @@ else
 	 header('location: ../../');
 }
 include("../../clases/conexion.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="esp">
@@ -52,7 +52,7 @@ include("../../clases/conexion.php");
 	<br>
 	<div class="row">
 				<div class="table-responsive">
-		<h1>Lista de Procesos: 
+		<h1>Lista de Ensamble: 
 			<?php
 			$proceso=$_SESSION['idproceso'];
 			$selecProceso="SELECT Nombre FROM PROCESO WHERE idPROCESO=$proceso";
@@ -74,7 +74,7 @@ include("../../clases/conexion.php");
 				<tbody>
 					<?php
 					$seleccionarmaquinado="SELECT ORDENPROCESO.Clave,MAQUINADO.Cantidad,PIEZA.Nombre,MAQUINADO.Estatus,PIEZA.idPIEZA,MAQUINADO.idMAQUINADO FROM MAQUINADO INNER JOIN ORDENPROCESO ON ORDENPROCESO.idORDENPROCESO=MAQUINADO.ORDENPROCESO_idORDENPROCESO INNER JOIN PIEZA ON PIEZA.idPIEZA=MAQUINADO.PIEZA_idPIEZA WHERE MAQUINADO.PROCESO_idPROCESO=$proceso";
-					
+					echo $seleccionarmaquinado;
 					$querymaqunado=mysqli_query($conn,$seleccionarmaquinado);
 					while ($filama=mysqli_fetch_array($querymaqunado)) 
 					{

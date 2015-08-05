@@ -17,7 +17,7 @@
             <li><a href="../Material">Material</a></li>
             <li class="active"><a href="#">Personal</a></li>
             <li><a href="../Roles">Roles</a></li>
-            <li><a href="#">Areas/Proceso</a></li>
+          <li><a href="../Configuracion">Configuracion</a></li>
             <li><a href="../../clases/cerrar.php">Salir</a></li>
 
           </ul>
@@ -44,10 +44,10 @@
     </thead>
     <tbody>
       <?php
-      include('../../clases/conexion.php'); 
+      include('../../clases/conexion.php');
       $consultaPersonal="SELECT * FROM PERSONAL";
       $queryConsulta=mysqli_query($conn,$consultaPersonal);
-      while ($filaPersonal=mysqli_fetch_array($queryConsulta)) 
+      while ($filaPersonal=mysqli_fetch_array($queryConsulta))
       {
         echo '<tr>';
         echo '<td>'.$filaPersonal['Nombre'].'</td>';
@@ -55,7 +55,7 @@
         echo '<td>'.$filaPersonal['ApellidoMaterno'].'</td>';
         echo '<td>'.$filaPersonal['Usuario'].'</td>';
         echo '<td>'.$filaPersonal['Estatus'].'</td>';
-        switch ($filaPersonal['Categoria']) 
+        switch ($filaPersonal['Categoria'])
         {
           case '1':
            echo '<td>Administrador</td>';

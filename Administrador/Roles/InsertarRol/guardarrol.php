@@ -13,7 +13,7 @@ if ($tamaño>0)
 		echo '<br>';}
 else
 {
-	$insertarRol="INSERT INTO ROLES (PROCESO_idPROCESO,PERSONAL_idPERSONAL,FechaEntrada) VALUES('$idProceso','$idNombre','$Fecha')";
+	$insertarRol="INSERT INTO ROLES (PROCESO_idPROCESO,PERSONAL_idPERSONAL,FechaEntrada,Estatus) VALUES('$idProceso','$idNombre','$Fecha','Activo')";
 	$queryrol=mysqli_query($conn,$insertarRol);
 	header("Refresh: 7; URL=../index.php");
 		echo '<h3>Exito al Insertar Nuevo rol</h3>';

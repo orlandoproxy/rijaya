@@ -2,7 +2,7 @@
 function Personal($usuario,$contra)
 {
 	include('../clases/conexion.php');
-	$seleccionarUsuario="SELECT Usuario FROM PERSONAL WHERE Usuario='$usuario'";
+	$seleccionarUsuario="SELECT Usuario FROM PERSONAL WHERE Usuario='$usuario'  AND Estatus='Activo'";
 		$queryusu=mysqli_query($conn,$seleccionarUsuario);
 		if (mysqli_fetch_assoc($queryusu)>0) 
 			{

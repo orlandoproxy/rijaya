@@ -146,11 +146,11 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 	{
 		echo '<h4>Nombre: '.$resul['Nombre'].'</h4>';
 		echo '<br>';
-		echo '<label>Estatus: '.$resul['Estatus'].'</label>';
 		echo '<br>';
 		echo '<h3>Piezas</h3>';
 		$idSUBENSAMBLEPIEZA=$resul['idSubensamble'];
 		$SElecionarPiezas="SELECT * FROM SUBENSAMBLEPIEZA INNER JOIN PIEZA ON SUBENSAMBLEPIEZA.PIEZA_idPIEZA=PIEZA.idPIEZA WHERE SUBENSAMBLE_idSubensamble='$idSUBENSAMBLEPIEZA'";
+		echo $SElecionarPiezas;
 		$querySubPiezas=mysqli_query($conn,$SElecionarPiezas);
 		echo '<table class="table">
 			<thead>
@@ -165,8 +165,6 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 			echo '<tr>';
 			echo '<td>'.$sub['Nombre'].'</td>';
 			echo '<tr>';
-
-			# code...
 		}
 		echo '</tbody>';
 		echo '</table';

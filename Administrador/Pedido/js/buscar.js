@@ -5,6 +5,7 @@ var xmlhttp;
 var valor=val;
 
 var n=document.getElementById('clave_'+val).value;
+var p=document.getElementById('tipo_'+val).value;
 if(n==''){
 document.getElementById("nombre_"+val).innerHTML="";
 return;
@@ -26,9 +27,9 @@ document.getElementById("nombre_"+val).innerHTML=xmlhttp.responseText;
 }
 }
 
-xmlhttp.open("POST","busqueda.php",true);
+xmlhttp.open("POST","autocompletar.php",true);
 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-xmlhttp.send("q="+n);
+xmlhttp.send("q="+n+','+p);
 
 }
 

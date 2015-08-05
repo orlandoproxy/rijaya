@@ -54,7 +54,7 @@ function AgregarManual()
 								$('#lector').val("");
 					}
 			});
-			//return false;
+			return false;
 
 		}
 		else

@@ -16,6 +16,7 @@ session_start();
 </head>
 <body>
 <div clas="container">
+	<h1>Paso 2 de 3</h1>
 	<form class="" action="Mostrar.php" method="post">
 		<a class="btn btn-primary" href='JavaScript:AgregarCampo();'>Agregar Pieza</a>
 		<div class="table-responsive">

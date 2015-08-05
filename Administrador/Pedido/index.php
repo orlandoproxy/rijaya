@@ -18,7 +18,7 @@
             <li><a href="../Material">Material</a></li>
             <li><a href="../Personal">Personal</a></li>
             <li><a href="../Roles">Roles</a></li>
-            <li><a href="#">Areas/Proceso</a></li>
+            <li><a href="../Configuracion">Configuracion</a></li>
             <li><a href="../../clases/cerrar.php">Salir</a></li>
 
           </ul>
@@ -65,25 +65,26 @@
     <tbody id="myDiv">
       <?php
       session_start();
-      if (isset($_SESSION['estatus'])) 
+      if (isset($_SESSION['estatus']))
         {
           $_SESSION['estatus'] = "Activo";
         }
         else
         {
-          
+
         }
       include("../../clases/conexion.php");
-      $selecionarPedido="SELECT NumPedido,Estatus,Prioridad FROM PEDIDO WHERE Estatus='No Iniciado' ";
+      $selecionarPedido="SELECT * FROM PEDIDO WHERE Estatus='No Iniciado' ";
       $queryPedido=mysqli_query($conn,$selecionarPedido);
-      while ($filaPedido=mysqli_fetch_array($queryPedido)) 
+      while ($filaPedido=mysqli_fetch_array($queryPedido))
       {
+        $idPedido=$filaPedido['idPEDIDO'];
         echo '<tr>';
         echo '<td>'.$filaPedido['NumPedido'].'</td>';
         echo '<td>'.$filaPedido['Estatus'].'</td>';
         echo '<td>'.$filaPedido['Prioridad'].'</td>';
-        echo '<td><a>Selecionar</a></td>';
-        echo '<td><a>Editar</a></td>';
+        echo '<td><a class="btn btn-primary" href="selecionar/index.php?iped='.$idPedido.'">Selecionar</a></td>';
+        echo '<td><a id="editar_'.$filaPedido['idPEDIDO'].'" class="btn btn-warning">Editar</a></td>';
         echo '</tr>';
       }
 

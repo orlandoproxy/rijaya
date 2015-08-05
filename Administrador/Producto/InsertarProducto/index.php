@@ -15,6 +15,7 @@ $Catego=mysqli_query($conn,$cadena);
 </head>
 <body>
 	<div class="container">
+		<h1>Paso 1 de 3</h1>
 	<h2>Nuevo Producto</h2>
 	<div class="form-horizontal">  
 			<div class="form-group">

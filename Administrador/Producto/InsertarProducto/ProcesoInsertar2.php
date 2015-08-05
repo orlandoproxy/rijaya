@@ -1,9 +1,10 @@
 <?php
+session_start();
 //print_r($_REQUEST);
 if (isset($_SESSION["idProdu"])) 
 {
 	include("../../../clases/conexion.php");
-session_start();
+
 $cadena=[];
 $contador=0;
 $idProducto=$_SESSION["idProdu"];
@@ -21,6 +22,7 @@ if (is_array($_REQUEST)==TRUE)
 print_r($cadena);
 $NombreEnsamble=$cadena[0];
 $InsertarEnsamble="INSERT INTO ENSAMBLE (Nombre,PRODUCTO_idPRODUCTO) VALUES('$NombreEnsamble','$idProducto')";
+echo$InsertarEnsamble;
 $queryInsertarEnsamble=mysqli_query($conn,$InsertarEnsamble);
 $Referencia=mysqli_insert_id($conn);
 unset($cadena[0]);
@@ -58,11 +60,11 @@ while (count($cadena)>1)
 }
 mysqli_close($conn);
 unset($_SESSION["idProdu"]);
-header("Location: ../");
+//header("Location: ../");
 }
 else
 {
-	header("Location: ../");
+	//header("Location: ../");
 
 }
 

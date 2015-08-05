@@ -1,5 +1,6 @@
 <?php
 $texto=$_POST['q'];
+print_r($texto);
 $cadena=explode(",", $texto);
 $clave=$cadena[0];
 $tipo=$cadena[1];

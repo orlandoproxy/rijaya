@@ -1,13 +1,22 @@
 <?php
 include('../clases/conexion.php');
 session_start();
-$idOperador=$_SESSION['id'];
+if (isset($_SESSION['id'])) 
+{
+	$idOperador=$_SESSION['id'];
+}
+else
+{
+	echo $idOperador;
+	//header('Location: ../');
+}
 
 if (isset($_SESSION['idTerminal'])) 
 {
 	$SelecionRol="SELECT PROCESO_idPROCESO FROM ROLES WHERE PERSONAL_idPERSONAL=$idOperador AND FechaSalida is null";
 	echo $SelecionRol;
 	$queryRol=mysqli_query($conn,$SelecionRol);
+
 	while ($fila=mysqli_fetch_array($queryRol)) 
 	{
 		$proceso=$fila['PROCESO_idPROCESO'];
@@ -41,11 +50,16 @@ if (isset($_SESSION['idTerminal']))
 			case 9:
 				header("Location: Terminado/");
 				break;
+			case 0:
+				header("Location: ../");
+				break;
 
 			default:
 				
 				break;
-		}	
+		}
+
+		$_SESSION['idproceso']=$proceso;	
 	}
 }
 else

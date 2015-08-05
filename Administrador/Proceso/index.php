@@ -20,7 +20,7 @@ mysqli_close($conn);
             <li><a href="../Material">Material</a></li>
             <li><a href="../Personal">Personal</a></li>
             <li><a href="../Roles">Roles</a></li>
-            <li><a href="#">Areas/Proceso</a></li>
+            <li><a href="../Configuracion">Configuracion</a></li>
             <li><a href="../../clases/cerrar.php">Salir</a></li>
 
           </ul>
@@ -69,7 +69,7 @@ mysqli_close($conn);
       include("../../clases/conexion.php");
       $selecionarPedido="SELECT NumPedido,Estatus,Prioridad FROM PEDIDO";
       $queryPedido=mysqli_query($conn,$selecionarPedido);
-      while ($filaPedido=mysqli_fetch_array($queryPedido)) 
+      while ($filaPedido=mysqli_fetch_array($queryPedido))
       {
         echo '<tr>';
         echo '<td>'.$filaPedido['NumPedido'].'</td>';

@@ -1,9 +1,23 @@
 <?php
 include('../../clases/conexion.php');
+session_start();
+if (isset($_SESSION['categoprodu'])) 
+{
+
+	//$_SESSION['categoprodu']= "linea";
+	$cate=$_SESSION['categoprodu'];
+}
+else
+{
+	$_SESSION['categoprodu']= "linea";
+}
+
+echo $cate;
 $q="";
 $q=$_POST['q'];
 //SELECT PRODUCTO.idPRODUCTO, PRODUCTO.Nombre,PRODUCTO.Tipo,PRODUCTO.Estatus,PRODUCTO.Medida1,PRODUCTO.Medida2,CATEGORIA.Nombre AS NombreCatego FROM PRODUCTO INNER JOIN CATEGORIA ON PRODUCTO.CATEGORIA_idCATEGORIA=CATEGORIA.idCATEGORIA WHERE
-$producto="SELECT PRODUCTO.idPRODUCTO,PRODUCTO.Clave, PRODUCTO.Nombre,PRODUCTO.Tipo,PRODUCTO.Estatus,PRODUCTO.Medida1,PRODUCTO.Medida2,PRODUCTO.Medida3,CATEGORIA.Nombre AS NombreCatego FROM PRODUCTO INNER JOIN CATEGORIA ON PRODUCTO.CATEGORIA_idCATEGORIA=CATEGORIA.idCATEGORIA WHERE (CONCAT(PRODUCTO.CLave,PRODUCTO.Nombre,PRODUCTO.Tipo,PRODUCTO.Estatus,CATEGORIA.Nombre)LIKE'%".$q."%')";
+$producto="SELECT PRODUCTO.idPRODUCTO,PRODUCTO.Clave, PRODUCTO.Nombre,PRODUCTO.Tipo,PRODUCTO.Estatus,PRODUCTO.Medida1,PRODUCTO.Medida2,PRODUCTO.Medida3,CATEGORIA.Nombre AS NombreCatego FROM PRODUCTO INNER JOIN CATEGORIA ON PRODUCTO.CATEGORIA_idCATEGORIA=CATEGORIA.idCATEGORIA WHERE (CONCAT(PRODUCTO.CLave,PRODUCTO.Nombre,PRODUCTO.Tipo,PRODUCTO.Estatus,CATEGORIA.Nombre)LIKE'%".$q."%') AND Tipo='$cate'";
+//echo $producto;
 //$producto="SELECT idPRODUCTO,Nombre,Tipo,Estatus,Clave FROM PRODUCTO WHERE Nombre LIKE'%".$q."%' ";
 
 $red=mysqli_query($conn,$producto);
