@@ -1,0 +1,40 @@
+<article id="loginuser" class="login">
+    <form>
+        <table>
+            <caption>Iniciar sesi&oacute;n</caption>
+            <tr>
+                <td>
+                    <label>USUARIO</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="user" placeholder="Introduce tu usuario" pattern=".{5,20}" required />
+                </td>  
+            </tr>
+            <tr>
+                <td>
+                    <label>CONTRASE&Ntilde;A</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="password" id="password" placeholder="Introduce tu password" pattern=".{5,20}" required />
+                </td>
+            </tr>
+            <tr>
+                <td id="mensaje"><div></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="session" type="checkbox" value="1"/>No cerrar sesi&oacute;n
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" id="access">Acceder</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</article>

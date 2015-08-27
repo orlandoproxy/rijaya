@@ -5,6 +5,11 @@
 <title>Personal</title>
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="canvas.css">
+<script type="text/javascript" src="../../js/jquery.js">
+</script>
+<script type="text/javascript" src="js/element.js">
+
+</script>
 </head>
 <body>
     <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -29,6 +34,17 @@
   <p>
      <a href="Insertar/" class="btn btn-primary btn-lg">Nuevo Personal</a>
   </p>
+  <div class="">
+    <select class="form-control" id="Tipo">
+      <option>Administradores</option>
+      <option>Jefe Produccion</option>
+      <option>Operador</option>
+      <option>Vendedor</option>
+      <option>Almacen</option>
+    </select>
+
+  </div>
+  <br>
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -42,10 +58,10 @@
         <td></td>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="cuerpo">
       <?php
       include('../../clases/conexion.php');
-      $consultaPersonal="SELECT * FROM PERSONAL";
+      $consultaPersonal="SELECT * FROM PERSONAL WHERE Categoria=1";
       $queryConsulta=mysqli_query($conn,$consultaPersonal);
       while ($filaPersonal=mysqli_fetch_array($queryConsulta))
       {

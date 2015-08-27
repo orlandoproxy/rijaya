@@ -27,6 +27,7 @@ function AgregarEnsamble()
 	+"<input type='checkbox' class='checkbox-inline' name='proceso_"+campo+"[]' value='5'> Punteado"
 	+"<input type='checkbox' class='checkbox-inline' name='proceso_"+campo+"[]' value='6'> Soldadura Mig"
 	+"<input type='checkbox' class='checkbox-inline' name='proceso_"+campo+"[]' value='7'>Lavado Sacudido"
+	+"<input type='checkbox' class='checkbox-inline' name='proceso_"+campo+"[]' value='10'>Sacudido"
 	+"<input type='checkbox' class='checkbox-inline' name='proceso_"+campo+"[]' value='8'>Pintura"
 	+"<input type='checkbox' class='checkbox-inline' name='proceso_"+campo+"[]' value='9'>Terminado"
 	+"</td>"
@@ -60,7 +61,7 @@ function EliminarEnsamble(ide)
 function AgegarPieza(ref)
 {
 	init = init+1;
-	var refsub = ref;	
+	var refsub = ref;
 	var nuevapieza = document.createElement("tr");
 	nuevapieza.id="idpieza_"+(ref)+"sub_"+(init);
 	nuevapieza.innerHTML=

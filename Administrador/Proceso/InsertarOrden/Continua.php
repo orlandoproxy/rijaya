@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['iid'])) 
+if (isset($_GET['iid']))
 {
 	$idPedido=$_GET['iid'];
 }
@@ -67,10 +67,10 @@ else
 					$selecionarProductospedido="SELECT PEDIDOPRODUCTO.PRODUCTO_idPRODUCTO,PEDIDOPRODUCTO.Cantidad, PRODUCTO.Nombre,PEDIDOPRODUCTO.Descripcion, PRODUCTO.Medida1, PRODUCTO.Medida2, PRODUCTO.Medida3, COLOR.Color FROM PEDIDOPRODUCTO INNER JOIN PRODUCTO ON PEDIDOPRODUCTO.PRODUCTO_idPRODUCTO=PRODUCTO.idPRODUCTO INNER JOIN COLOR ON PEDIDOPRODUCTO.COLOR_idCOLOR=COLOR.idCOLOR WHERE PEDIDOPRODUCTO.PEDIDO_idPEDIDO=$idPedido";
 					$sqlSelecion=mysqli_query($conn,$selecionarProductospedido);
 					$cont=0;
-					while ($fila=mysqli_fetch_array($sqlSelecion)) 
+					while ($fila=mysqli_fetch_array($sqlSelecion))
 					{
 						echo '<tr>';
-						echo '<td><input type="checkbox" class="form-control" value="'.$fila['PRODUCTO_idPRODUCTO'].'" name="producto'.$cont.'[]" required></td>';
+						echo '<td><input type="checkbox" class="form-control" value="'.$fila['PRODUCTO_idPRODUCTO'].'" name="producto'.$cont.'[]"></td>';
 						echo '<td><input type="text" class="form-control" name="producto'.$cont.'[]" value="'.$fila['Cantidad'].'" readonly="readonly" size="2"></td>';
 						echo '<td>'.$fila['Nombre'].'</td>';
 						echo '<td>'.$fila['Descripcion'].'</td>';

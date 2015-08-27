@@ -1,0 +1,128 @@
+@import url("responsive.css");
+body
+{
+    padding: 0px;
+    margin: 0px;
+    background: black url("../../web/img/fondo.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+header
+{
+    width: 100%;
+    height: 15px;
+    background-color: #262626;
+    padding:20px;
+    color:white;
+    font-family: sans-serif;
+    font-weight: bold;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.75);
+}
+header nav
+{
+    float:right;
+    width: 225px;
+    font-size: 12px;
+}
+header nav ul
+{
+    padding: 0px;
+    margin: 0px;
+}
+header nav ul li
+{
+    list-style:none;
+    display: inline;
+}
+header nav ul li a
+{
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color:white;
+    background: transparent radial-gradient(ellipse at center center , #499BEA 0%, #499BEA 46%, #207CE5 100%) repeat scroll 0% 0%;
+}
+header nav ul li a:active
+{
+    background: radial-gradient(ellipse at center, rgba(27,131,228,1) 0%, rgba(22,101,192,1) 100%);
+}
+#loginuser
+{
+    width: 300px;
+    height: 321px;
+    background-color: #262626;
+    color: white;
+    border-radius: 0.4em;
+    font-family: sans-serif;
+    animation-name: login;
+    animation-duration: 1s
+}
+#loginopera
+{
+    width: 300px;
+    height: 239px;
+    background-color: #262626;
+    color: white;
+    border-radius: 0.4em;
+    font-family: sans-serif;
+    animation-name: login;
+    animation-duration: 1s
+}
+.login table
+{
+    width: 100%;
+}
+.login table caption
+{
+    padding: 15px 0px;
+    font-size: 25px;
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+    text-align: center;
+}
+.login table input[type="text"],.login table input[type="password"]
+{
+    width: 88%;
+    margin-left: 10px;
+    padding: 8px 5px;
+}
+.login table input[type="checkbox"]
+{
+    margin-left: 15px;
+}
+.login table label
+{
+    margin-left: 10px;  
+    font-size: 12px;
+
+}
+.login table td
+{
+    padding-bottom: 9px;
+}
+#mensaje
+{
+    display: none;
+    color: red;
+    font-size: 12px;
+    padding: 0px;
+}
+#mensaje div
+{
+    margin-left: 15px;
+}
+.login button
+{
+    border: none;
+    border-radius: 5px;
+    width: 271px;
+    height: 40px;
+    font-weight: bold;
+    color:white;
+    background: radial-gradient(ellipse at center, rgba(73,155,234,1) 0%, rgba(73,155,234,1) 46%, rgba(32,124,229,1) 100%);
+    margin-left: 10px;
+}
+.login button:active
+{
+    margin-top:4px;
+}

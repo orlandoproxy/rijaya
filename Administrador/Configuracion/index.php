@@ -18,5 +18,57 @@
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </nav>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <div class="container">
+      <a class="btn btn-primary" href="#">Nueva Terminal</a>
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Terminales Activas</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <td>Clave</td>
+                <td>Nombre</td>
+                <td>Estado</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <h2>Terminales Inactivas</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <td>Clave</td>
+                <td>Nombre</td>
+                <td>Estado</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <h2>Terminales Suspendidas</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <td>Clave</td>
+                <td>Nombre</td>
+                <td>Estado</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+
+    </div>
 </body>
 </html>
