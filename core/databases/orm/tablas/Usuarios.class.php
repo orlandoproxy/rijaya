@@ -24,16 +24,18 @@
 */
 require_once __DIR__.'/../coleccion/ColeccionSql.class.php';
 
-class Clientes extends ColeccionSql
+class Usuarios extends ColeccionSql
 {
-    private $IdCliente;
-    private $Codigo;
-    private $Mac;
+    private $IdUsuario;
+    private $Usuario;
+    private $Password;
+    private $Activador;
+    private $NumSuc;
 
     public function __construct($ColBusqueda = FALSE, $ValorBusqueda = FALSE, $Columna = array("*"), $Limite = 1)
     {
         parent::__construct();
-        $this->Tabla = "clientes";
+        $this->Tabla = "usuarios";
         if($ColBusqueda && $ValorBusqueda)
         {
             $this->establecer($ColBusqueda, $ValorBusqueda, $Columna, $Limite);
@@ -47,25 +49,35 @@ class Clientes extends ColeccionSql
         $this->mientras($ColBusqueda, $ValorBusqueda);
         $this->limite("$Limite");
         $this->consultar($Columnas, $this->Tabla);
-        $Cliente = $this->extraer(PDO::FETCH_ASSOC);
-        $this->IdCliente = $this->iterarColumna($Cliente, "id_cliente");
-        $this->Codigo = $this->iterarColumna($Cliente, "codigo");
-        $this->Mac = $this->iterarColumna($Cliente, "mac");
+        $Usuario = $this->extraer(PDO::FETCH_ASSOC);
+        $this->IdUsuario = $this->iterarColumna($Usuario, "id_usuario");
+        $this->Usuario = $this->iterarColumna($Usuario, "usuario");
+        $this->Password = $this->iterarColumna($Usuario, "password");
+        $this->Activador = $this->iterarColumna($Usuario, "activador");
+        $this->NumSuc = $this->iterarColumna($Usuario, "numsuc");
     }
 
     public function actualizar($colBusqueda, $valorBusqueda)
     {
-            if($this->IdBillioon)
+            if($this->IdUsuario)
             {
-                $columna[] = "id_cliente='$this->IdCliente'";
+                $columna[] = "id_usuario='$this->IdUsuario'";
             }
-            if($this->Nombre)
+            if($this->Usuario)
             {
-                $columna[] = "codigo='$this->Codigo'";
+                $columna[] = "usuario='$this->Usuario'";
             }
-            if($this->Bote)
+            if($this->Password)
             {
-                $columna[] = "mac='$this->Mac'";
+                $columna[] = "password='$this->Password'";
+            }
+            if($this->Activador)
+            {
+                $columna[] = "activador='$this->Activador'";
+            }
+            if($this->NumSuc)
+            {
+                $columna[] = "numsuc='$this->NumSuc'";
             }
             $this->mientras($colBusqueda, $valorBusqueda);
             $this->recargar($columna, $this->Tabla);
@@ -74,37 +86,52 @@ class Clientes extends ColeccionSql
     public function insertar()
     {
         $valores = array("'$this->Codigo'","'$this->Mac'");
-        $columnas = array("codigo","mac");
+        $columnas = array("usuario", "password", "activador", "numsuc");
         $this->cargar($columnas, $valores, $this->Tabla);
     }
 
-    public function obtenerIdCliente()
+    public function obtenerIdUsuario()
     {
-        return $this->IdCliente;
+        return $this->IdUsuario;
     }
 
-    public function establecerIdCliente($idcliente)
+    public function obtenerUsuario()
     {
-        $this->IdCliente = $idcliente;
+        return $this->Usuario;
     }
 
-    public function obtenerCodigo()
+    public function establecerUsuario($usuario)
     {
-        return $this->Codigo;
+        $this->Usuario = $usuario;
     }
 
-    public function establecerCodigo($codigo)
+    public function obtenerPassword()
     {
-        $this->Codigo = $codigo;
+        return $this->Password;
     }
 
-    public function obtenerMac()
+    public function establecerPassword($password)
     {
-        return $this->Mac;
+        $this->Password = $password;
     }
 
-    public function establecerMac($mac)
+    public function obtenerActivador()
     {
-        $this->Mac = $mac;
+        return $this->Password;
+    }
+
+    public function establecerActivador($password)
+    {
+        $this->Password = $password;
+    }
+
+    public function obtenerNumSuc()
+    {
+        return $this->NumSuc;
+    }
+
+    public function establecerNumSuc($numsuc)
+    {
+        $this->NumSuc = $numsuc;
     }
 }

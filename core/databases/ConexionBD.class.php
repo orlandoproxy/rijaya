@@ -6,7 +6,7 @@
  * facebook: https://www.facebook.com/elhombre.sonriente
  * google+: https://plus.google.com/116784166035161515634
  * =============================================================================
- *                               LICENSE GPL 
+ *                               LICENSE GPL
  * =============================================================================
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,23 +29,23 @@ final class ConexionBD extends Interfaz
 {
     private static $Instancia;
     private static $Anfitrion;
-    private static $Clave; 
+    private static $Clave;
     private static $Usuario;
     private static $BaseDeDatos;
     private static $GestorDeBaseDeDatos;
     private static $Puerto;
-  
+
     private function __construct()
     {
         self::$Instancia = null;
         self::$Anfitrion = "127.0.0.1";
         self::$Usuario = "root";
-        self::$Clave = "";
+        self::$Clave = "6a6f7063";
         self::$BaseDeDatos = "pdv";
         self::$GestorDeBaseDeDatos = "mysql";
         self::$Puerto = "10060";
     }
-    
+
    public static function obtenerInstancia()
     {
         if(!self::$Instancia instanceof self)
@@ -53,8 +53,8 @@ final class ConexionBD extends Interfaz
             self::$Instancia = new self;
         }
         return self::$Instancia;
-    } 
-    
+    }
+
     protected function conexionSql()
     {
         $Cadena = $this->fabricarCadena();
@@ -80,10 +80,10 @@ final class ConexionBD extends Interfaz
         catch (PDOException $E)
         {
             echo "No se pudo conectar: " . $E->getMessage();
-            
-        } 
+
+        }
     }
-    
+
     private function fabricarCadena()
     {
         switch (self::$GestorDeBaseDeDatos)
@@ -91,18 +91,18 @@ final class ConexionBD extends Interfaz
             case "sqlite":
                 $Cadena = self::$GestordeBaseDeDatos.":".self::$BaseDeDatos;
                 break;
-            
+
             case "mysql":
                 $Cadena = self::$GestorDeBaseDeDatos.":host=".self::$Anfitrion.
                           ";dbname=".self::$BaseDeDatos;
-                break; 
-            
+                break;
+
             case "dblib":
                 $Cadena = self::$GestorDeBaseDeDatos.
                           ":host=".self::$Anfitrion.":".self::$Puerto.
                           ";dbname=".self::$BaseDeDatos;
                 break;
-                
+
             case "pgsql":
                 $Cadena = self::$GestorDeBaseDeDatos.
                           ":host=".self::$Anfitrion.
@@ -111,19 +111,19 @@ final class ConexionBD extends Interfaz
                           ";user=".self::$Usuario.
                           ";password=".self::$Clave;
                 break;
-            
+
             case "":
                 $Cadena = self::$GestorDeBaseDeDatos.
                           ";dbname=".self::$Anfitrion."/".self::$BaseDeDatos;
                 break;
-                
+
             default:
                 return false;
         }
-        
+
         return $Cadena;
     }
-    
+
     public function __clone()
     {
         trigger_error("No puedes crear otro objeto", E_USER_ERROR);
@@ -132,5 +132,5 @@ final class ConexionBD extends Interfaz
     {
         trigger_error("No puedes crear otro objeto", E_USER_ERROR);
     }
-    
+
 }
