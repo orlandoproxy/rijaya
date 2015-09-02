@@ -67,14 +67,14 @@ mysqli_close($conn);
     <tbody id="myDiv">
       <?php
       include("../../clases/conexion.php");
-      $selecionarPedido="SELECT NumPedido,Estatus,Prioridad FROM PEDIDO";
+      $selecionarPedido="SELECT * FROM ORDENPROCESO";
       $queryPedido=mysqli_query($conn,$selecionarPedido);
       while ($filaPedido=mysqli_fetch_array($queryPedido))
       {
         echo '<tr>';
-        echo '<td>'.$filaPedido['NumPedido'].'</td>';
-        echo '<td>'.$filaPedido['Estatus'].'</td>';
-        echo '<td>'.$filaPedido['Prioridad'].'</td>';
+        echo '<td>'.$filaPedido['Clave'].'</td>';
+        echo '<td>'.$filaPedido['FechaEmicion'].'</td>';
+        echo '<td>'.$filaPedido['FechaEmicion'].'</td>';
         echo '<td><a class="btn btn-primary">Selecionar</a></td>';
         echo '<td><a>Editar</a></td>';
         echo '</tr>';

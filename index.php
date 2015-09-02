@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="esp">
 <head>
@@ -55,7 +54,7 @@
     <script src="./js/mijava.js"></script>
 
     <!-- Custom styles for this template -->
- 
+
 <!-- -->
 </head>
 <body>
@@ -72,37 +71,10 @@
           <input type='password' id='pass' class='form-control' placeholder='Contraseña' required=''>
           <a class='btn btn-lg btn-primary btn-block'  id='ingresar' href='JavaScript:AgregarManual();'>Ingresar </a>
         </div>
-        
+
         <div class="alert-info" id="mensaje"></div>
       </div>
 
     </div>
-=======
-<!DOCTYPE HTML>
-<html lang="esp">
-<?php include_once __DIR__.'/web/layout/head.html'; ?>
-<body>
-<header>
-    Develorm
-<?php include_once __DIR__.'/web/layout/nav.html'; ?>
-</header>
-<?php 
-if(isset($_GET['login']))
-{
-    if($_GET['login'] === "usuario")
-    {
-        include_once __DIR__.'/web/layout/loginusuario.html';     
-    }
-    elseif($_GET['login'] === "operador")
-    {
-        include_once __DIR__.'/web/layout/loginoperador.html';
-    }
-}
-else
-{
-    include_once __DIR__.'/web/layout/loginoperador.html';
-}
-?>
->>>>>>> a924101382fda2dc3eeaaa65d2431054136902b5
 </body>
 </html>

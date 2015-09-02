@@ -1,4 +1,6 @@
 <?php
+session_start();
+$idPedido=	$_SESSION['idpedido'];
 include("../../../clases/conexion.php");
 session_start();
 if (isset($_SESSION['idpedido']))
@@ -60,17 +62,22 @@ echo '<br>';
 					$CantidadPiezas="SELECT PRODUCTOPIEZA.PIEZA_idPIEZA, PRODUCTOPIEZA.Cantidad,PIEZA.Nombre, PIEZA.Medida1, PIEZA.Medida2, PIEZA.Medida3, MATERIAL.Nombre FROM PRODUCTOPIEZA INNER JOIN PIEZAPROCESO ON PRODUCTOPIEZA.PIEZA_idPIEZA=PIEZAPROCESO.PIEZA_idPIEZA INNER JOIN PIEZA ON PIEZA.idPIEZA=PRODUCTOPIEZA.PIEZA_idPIEZA INNER JOIN MATERIAL ON PIEZA.MATERIAL_idMATERIAL=MATERIAL.idMATERIAL WHERE PRODUCTOPIEZA.PRODUCTO_idPRODUCTO=$idProducto AND PIEZAPROCESO.PROCESO_idPROCESO=$i";
 					$selecionProducto="SELECT Nombre FROM PRODUCTO WHERE idPRODUCTO=$idProducto";
 					$queryProducto=mysqli_query($conn,$selecionProducto);
-					$queryPiezas=mysqli_query($conn,$CantidadPiezas);{
+					$queryPiezas=mysqli_query($conn,$CantidadPiezas);
+
 					$nombreproducto=mysqli_fetch_array($queryProducto);
-					echo 'Producto: '.$nombreproducto[0];
-					}
 					echo '<table id="'.$contadorttabla.'" class="table">';
 					echo '<thead>';
+					echo '<tr>';
+					echo '<td>'.$cantidadProducto.'</td>';
+					echo '<td>'.$nombreproducto[0].'</td>';
+					echo '<td><a class="btn btn-danger">Eliminar tabla</a></td>';
+					echo '</tr>';
 					echo '<tr class="success">';
 					echo '<td width="80">Cantidad</td>';
 					echo '<td>Nombre</td>';
 					echo '<td>Medidas</td>';
 					echo '<td>Material</td>';
+					echo '<td></td>';
 					echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
@@ -86,6 +93,7 @@ echo '<br>';
 						echo '<td><input type="text" class="form-control" id="" name="" value="'.$NombrePieza.'"></td>';
 						echo '<td><input type="text" class="form-control" id="" name="" value="'.$MedidasPiezas.'"></td>';
 						echo '<td><input type="text" class="form-control" id="" name="" value="'.$MaterialPieza.'"></td>';
+						echo '<td><a class="btn btn-warning">Eliminar</a></td>';
 						echo '</tr>';
 					}
 					echo '</tbody>';
@@ -112,6 +120,7 @@ echo '<br>';
 				echo '<td>Cantidad</td>';
 				echo '<td>Nombre</td>';
 				echo '<td>Descripcion</td>';
+				echo '<td></td>';
 				echo '</tr>';
 				echo '</thead>';
 				echo '<tbody>';
@@ -124,6 +133,7 @@ echo '<br>';
 					echo '<td><input type="text" class="form-control" value="'.$cantidadtotal.'"> </td>';
 					echo '<td><input type="text" class="form-control" value="'.$filasoldadura['Nombre'].'"> </td>';
 					echo '<td><input type="text" class="form-control"></td>';
+					echo '<td><a class="btn btn-warning">Eliminar</a></td>';
 					echo '</tr>';
 				}
 				echo '</tbody>';
@@ -147,6 +157,7 @@ echo '<br>';
 				echo '<td>Cantidad</td>';
 				echo '<td>Nombre</td>';
 				echo '<td>Descripcion</td>';
+				echo '<td></td>';
 				echo '</tr>';
 				echo '</thead>';
 				echo '<tbody>';
@@ -159,6 +170,7 @@ echo '<br>';
 					echo '<td><input type="text" class="form-control" value="'.$cantidadtotal.'"</td>';
 					echo '<td><input type="text" class="form-control" value="'.$filasoldadura['Nombre'].'"</td>';
 					echo '<td><input type="text" class="form-control"></td>';
+					echo '<td><a class="btn btn-warning">Eliminar</a></td>';
 					echo '</tr>';
 				}
 				echo '</tbody>';
@@ -191,6 +203,7 @@ echo '<br>';
 					echo '<td>Cantidad</td>';
 					echo '<td>Nombre</td>';
 					echo '<td>Descripcion</td>';
+					echo '<td></td>';
 					echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
@@ -203,6 +216,7 @@ echo '<br>';
 						echo '<td><input type="text" class="form-control" value="'.$cantidadtotal.'"></td>';
 						echo '<td><input type="text" class="form-control" value="'.$filasoldadura['Nombre'].'"></td>';
 						echo '<td><input type="text" class="form-control"></td>';
+						echo '<td><a class="btn btn-warning">Eliminar</a></td>';
 						echo '</tr>';
 					}
 					echo '</tbody>';
@@ -211,7 +225,17 @@ echo '<br>';
 				}
 			}
 			//seccion de pintura
-			echo '<h3>pintura</h3>';
+			echo '<h3>Pintura</h3>';
+			echo '<table id="'.$contadorttabla.'" class="table">';
+			echo '<thead>';
+			echo '<tr class="success">';
+			echo '<td>Cantidad</td>';
+			echo '<td>Nombre</td>';
+			echo '<td>Color</td>';
+			echo '<td></td>';
+			echo '</tr>';
+			echo '</thead>';
+			echo '<tbody>';
 			foreach ($concentrado as $key => $value)
 			{
 				$idPoducto=$value[0];
@@ -219,32 +243,39 @@ echo '<br>';
 				$selecionProducto="SELECT Nombre FROM PRODUCTO WHERE idPRODUCTO=$idPoducto";
 				$queryProducto=mysqli_query($conn,$selecionProducto);
 				$filaproducto=mysqli_fetch_array($queryProducto);
-				echo '<label>Producto: '.$filaproducto[0].'</label>';
-				echo '<br>';
-				echo '<table id="'.$contadorttabla.'" class="table">';
-				echo '<thead>';
-				echo '<tr class="success">';
-				echo '<td>Cantidad</td>';
-				echo '<td>Nombre</td>';
-				echo '<td>Descripcion</td>';
-				echo '</tr>';
-				echo '</thead>';
-				echo '<tbody>';
 				$selecionarEnsambles="SELECT SUBENSAMBLE.Cantidad, SUBENSAMBLE.Nombre FROM PRODUCTO INNER JOIN ENSAMBLE ON PRODUCTO.idPRODUCTO=ENSAMBLE.PRODUCTO_idPRODUCTO INNER JOIN SUBENSAMBLE ON ENSAMBLE.idENSAMBLE=SUBENSAMBLE.ENSAMBLE_idENSAMBLE INNER JOIN SUBENSAMBLEPROCESO ON SUBENSAMBLEPROCESO.SUBENSAMBLE_idSubensamble=SUBENSAMBLE.ENSAMBLE_idENSAMBLE WHERE PRODUCTO.idPRODUCTO=$idPoducto AND SUBENSAMBLEPROCESO.PROCESO_idPROCESO=$proceso";
 				$querysoldadura=mysqli_query($conn,$selecionarEnsambles);
 				while ($filasoldadura=mysqli_fetch_array($querysoldadura))
 				{
+					$selecionarcolor="SELECT COLOR.Color FROM PEDIDOPRODUCTO INNER JOIN COLOR ON PEDIDOPRODUCTO.COLOR_idCOLOR=COLOR.idCOLOR WHERE PEDIDOPRODUCTO.PEDIDO_idPEDIDO=$idpedido AND PEDIDOPRODUCTO.PRODUCTO_idPRODUCTO=$idPoducto";
+					//echo $selecionarcolor;
+					$querycolor=mysqli_query($conn,$selecionarcolor);
+					$filacolor=mysqli_fetch_array($querycolor);
 					$cantidadtotal=$cantidadProducto*$filasoldadura['Cantidad'];
 					echo '<tr>';
 					echo '<td><input type="text" class="form-control" value="'.$cantidadtotal.'"></td>';
 					echo '<td><input type="text" class="form-control" value="'.$filasoldadura['Nombre'].'"></td>';
-					echo '<td><input type="text" class="form-control"></td>';
+					echo '<td><input type="text" class="form-control" value="'.$filacolor['Color'].'"></td>';
+					echo '<td><a class="btn btn-warning">Eliminar</a></td>';
 					echo '</tr>';
 				}
-				echo '</tbody>';
-				echo '</table>';
 				$contadorttabla=$contadorttabla+1;
 			}
+			echo '</tbody>';
+			echo '</table>';
+
+			//seccion de terminado
+			echo '<h3>Terminado</h3>';
+			echo '<table id="'.$contadorttabla.'" class="table">';
+			echo '<thead>';
+			echo '<tr class="success">';
+			echo '<td>Cantidad</td>';
+			echo '<td>Nombre</td>';
+			echo '<td>Color</td>';
+			echo '<td></td>';
+			echo '</tr>';
+			echo '</thead>';
+			echo '<tbody>';
 
 			 ?>
 		</div>
