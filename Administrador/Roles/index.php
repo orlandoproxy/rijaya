@@ -2,8 +2,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Roles</title>
-<script type="text/javascript" src="js/buscar.js"></script>
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="clases/final.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -42,7 +43,6 @@
           <td>Nombre</td>
           <td>Proceso</td>
           <td>Fecha Entrada</td>
-          <td>Fecha Salida</td>
           <td></td>
           <td></td>
         </tr>
@@ -50,7 +50,7 @@
       <tbody>
         <?php
         include("../../clases/conexion.php");
-        $ConsultaTabla="SELECT PERSONAL.Nombre,PROCESO.Nombre AS NombreProceso, ROLES.FechaEntrada, ROLES.FechaSalida FROM `ROLES` INNER JOIN PERSONAL ON PERSONAL_idPERSONAL=idPERSONAL INNER JOIN PROCESO ON idPROCESO=PROCESO_idPROCESO";
+        $ConsultaTabla="SELECT PERSONAL.Nombre,PROCESO.Nombre AS NombreProceso, ROLES.idROLES, ROLES.FechaEntrada, ROLES.FechaSalida FROM `ROLES` INNER JOIN PERSONAL ON PERSONAL_idPERSONAL=idPERSONAL INNER JOIN PROCESO ON idPROCESO=PROCESO_idPROCESO WHERE ROLES.Estatus='Activo'";
         $queryTabla=mysqli_query($conn,$ConsultaTabla);
         while ($filatabla=mysqli_fetch_array($queryTabla))
         {
@@ -58,7 +58,6 @@
           echo '<td>'.$filatabla['Nombre'].'</td>';
           echo '<td>'.$filatabla['NombreProceso'].'</td>';
           echo '<td>'.$filatabla['FechaEntrada'].'</td>';
-          echo '<td>'.$filatabla['FechaSalida'].'</td>';
           if (count($filatabla['FechaSalida'])>0)
           {
             echo '<td></td>';
@@ -66,7 +65,7 @@
           }
           else
           {
-          echo  '<td><a class="btn btn-success" href="">Modificar</a></td>';
+          echo  '<td><a class="btn btn-success" href="JavaScript:Finalizar('.$filatabla['idROLES'].');">Finalizar</a></td>';
           echo  '<td></td>';
           }
           echo '</tr>';

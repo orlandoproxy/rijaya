@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<<<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
             <li><a href="../../clases/cerrar.php">Salir</a></li>
 
           </ul>
-        </div><!-- /.nav-collapse -->
+        </div><!-- /.nav-collapse --><
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
 
@@ -36,10 +36,10 @@
   </p>
   <div class="">
     <select class="form-control" id="Tipo">
-      <option>Administradores</option>
-      <option>Jefe Produccion</option>
-      <option>Operador</option>
-      <option>Vendedor</option>
+      <option value="1">Administradores</option>
+      <option value="2">Jefe Produccion</option>
+      <option value="5">Operador</option>
+      <option value="4">Vendedor</option>
       <option>Almacen</option>
     </select>
 

@@ -3,10 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <title>Modificar Personal</title>
 </head>
 <body>
 	<?php
-	include("../../../clases/conexion.php"); 
+	include("../../../clases/conexion.php");
 	$idPersona=$_GET['idpersonal'];
 	session_start();
 	$_SESSION['id']=$idPersona;
@@ -36,11 +37,11 @@
 			</div>
 			<div class="form-group">
 				<label for="Contra">Contraseña</label>
-				<input type="text" class="form-control" id="Contra" name="Contrase" value="<?php echo $fila['Contra']; ?>">
+				<input type="text" class="form-control" id="Contra" name="Contrase" value="">
 			</div>
 			<?php
 			$cate=$fila['Categoria'];
-			switch ($cate) 
+			switch ($cate)
 			{
 				case '1':
 					$categoria="Administrador";
@@ -60,12 +61,12 @@
 			}
 			?>
 				<div class="form-group">
-				<label for="Categori">Categoria</label> 
+				<label for="Categori">Categoria</label>
 				<select id="Categori" name="Categoria" class="form-control" value="<?php echo $categoria; ?>">
 				<option>Administrador</option>
 				<option>Jefe de Produccion</option>
 				<option>Vendedor</option>
-				<option>Trabajador</option>
+				<option>Operador</option>
 			</select>
 			</div>
 			<div class="form-group">
@@ -77,6 +78,7 @@
 			</select>
 			</div>
 			<button class="btn btn-success" type="submit">Guardar</button>
+      <a class="btn btn-warning" href="../">Cancelar</a>
 		</form>
 	</div>
 </body>

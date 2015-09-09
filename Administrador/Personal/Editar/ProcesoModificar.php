@@ -4,7 +4,7 @@ $Nombre=$_POST['Nombre'];
 $ApellidoPa=$_POST['ApellidoPaterno'];
 $ApellidoMaterno=$_POST['ApellidoMaterno'];
 $NombreUsu=$_POST['NombreUsuario'];
-$Contra=$_POST['Contrase'];
+$Contra=md5($_POST['Contrase']);
 $Categoria=$_POST['Categoria'];
 $Estatus=$_POST['Estatus'];
 session_start();
@@ -20,7 +20,7 @@ switch ($Categoria) {
 	case 'Vendedor':
 		$catego=3;
 		break;
-	case 'Trabajador':
+	case 'Operador':
 		$catego=4;
 		break;
 }
