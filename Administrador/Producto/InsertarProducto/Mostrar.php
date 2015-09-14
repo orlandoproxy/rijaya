@@ -1,4 +1,5 @@
-<?php 
+<?php
+header("Content-Type: text/html;charset=utf-8");
 include('../../../clases/conexion.php');
 session_start();
 $IDPRODU= $_SESSION['idProdu'];
@@ -9,12 +10,12 @@ echo $IDPRODU;
 echo '<br/>';
 if (is_array($_REQUEST)==true)
 {
-	foreach ($_REQUEST as $cadena[$cont] => $value) 
+	foreach ($_REQUEST as $cadena[$cont] => $value)
 	{
 		$cadena[$cont] = $value;
 		$cont=$cont+1;
 	}
-	while (count($cadena)>1) 
+	while (count($cadena)>1)
 	{
 			$cantidad = $cadena[0];
 	$nombre = $cadena[1];
@@ -27,11 +28,11 @@ if (is_array($_REQUEST)==true)
 	$selecMaterial= "SELECT idMaterial FROM MATERIAL WHERE Clave LIKE'%".$material."%'";
 	//insertar pieza
 	$ResMaterial = mysqli_query($conn,$selecMaterial);
-	if (mysqli_num_rows($ResMaterial)>0) 
+	if (mysqli_num_rows($ResMaterial)>0)
 	{
 		$ListaMaterial = mysqli_fetch_array($ResMaterial);
 		$idMaterial = $ListaMaterial['idMaterial'];
-		
+
 	}
 	$selecPieza = "SELECT * FROM PIEZA WHERE Nombre='$nombre' && MATERIAL_idMATERIAL='$idMaterial' && Medida1='$medida1' && Medida2='$medida2' && Medida3='$medida3' ";
 	$ResPieza = mysqli_query($conn,$selecPieza);
@@ -42,8 +43,8 @@ if (is_array($_REQUEST)==true)
 		//insertar pieza producto
 		$querypiezaprodu= mysqli_query($conn,"INSERT INTO PRODUCTOPIEZA (PRODUCTO_idPRODUCTO,PIEZA_idPIEZA,Cantidad) VALUES ('$IDPRODU','$pieza','$cantidad')");
 		echo "INSERT INTO PRODUCTOPIEZA (PRODUCTO_idPRODUCTO,PIEZA_idPIEZA,Cantidad) VALUES ('$IDPRODU','$pieza')";
-		for ($j=0; $j < count($listapro) ; $j++) 
-		{ 			
+		for ($j=0; $j < count($listapro) ; $j++)
+		{
 			$querypro= mysqli_query($conn,"SELECT idPROCESO FROM PROCESO WHERE NOMBRE = '$listapro[$j]'");
 			$listaid=mysqli_fetch_array($querypro);
 			$idproinser= $listaid['idPROCESO'];
@@ -60,16 +61,11 @@ if (is_array($_REQUEST)==true)
 		$cadena= array_values($cadena);
 
 
-	
+
 	}
-	
-	
+
+
 	header('Location:Ensamble.php');
 }
 
 ?>
-
-
-
-
-

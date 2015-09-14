@@ -8,6 +8,7 @@ session_start();
 ?>
 <html>
 <head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>Agregar Piezas</title>
 	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
@@ -29,7 +30,7 @@ session_start();
 					<td>Procesos</td>
 					<td>Material</td>
 				</tr>
-				
+
 			</thead>
 			<tbody id="Contenido">
 
@@ -37,7 +38,7 @@ session_start();
 		</table>
 		</div>
 		<button class="btn btn-primary" type="submit" >Enviar</button>
-		
+
 	</form>
 </div>
 </body>

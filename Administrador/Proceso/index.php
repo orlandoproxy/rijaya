@@ -73,9 +73,10 @@ mysqli_close($conn);
       {
         echo '<tr>';
         echo '<td>'.$filaPedido['Clave'].'</td>';
-        echo '<td>'.$filaPedido['FechaEmicion'].'</td>';
-        echo '<td>'.$filaPedido['FechaEmicion'].'</td>';
-        echo '<td><a class="btn btn-primary">Selecionar</a></td>';
+        echo '<td>'.$filaPedido['Estatus'].'</td>';
+        echo '<td>'.$filaPedido['Prioridad'].'</td>';
+        $id=$filaPedido['idORDENPROCESO'];
+        echo '<td><a class="btn btn-primary" href="Selecionar/index.php?id='.$id.'">Selecionar</a></td>';
         echo '<td><a>Editar</a></td>';
         echo '</tr>';
       }

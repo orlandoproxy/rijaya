@@ -8,6 +8,10 @@ if (isset($_SESSION['idpedido']))
 }
 $contadorttabla=0;
 $idpedido=$_SESSION['idpedido'];
+$selecionarpedido="SELECT NumPedido FROM PEDIDO WHERE idPEDIDO=$idPedido";
+$querypedido=mysqli_query($conn,$selecionarpedido);
+$filapedido=mysqli_fetch_assoc($querypedido);
+$numeropedido=$filapedido["NumPedido"];
 $concentrado=array();
 $cont=0;
 foreach ($_REQUEST as $key => $value)
@@ -16,7 +20,12 @@ foreach ($_REQUEST as $key => $value)
 	$cont=$cont+1;
 }
 echo '<br>';
-$InsertarProceso="INSERT INTO ORDENPROCESO (FechaEmicion,Prioridad,Estatus,PEDIDO_idPEDIDO) VALUES('$concentrado[0]','$concentrado[1]','No Iniciado','$idpedido')";
+$Selecionarordenproceso="SELECT count(*) FROM `ORDENPROCESO` WHERE PEDIDO_idPEDIDO=$idpedido";
+$queryselecionar=mysqli_query($conn,$Selecionarordenproceso);
+$tamanioproceso=mysqli_fetch_assoc($queryselecionar);
+$numero=$tamanioproceso["count(*)"]+1;
+$referencia=$numeropedido.'-'.$numero;
+$InsertarProceso="INSERT INTO ORDENPROCESO (FechaEmicion,Prioridad,Estatus,PEDIDO_idPEDIDO,Clave) VALUES('$concentrado[0]','$concentrado[1]','Iniciado','$idpedido','$referencia')";
 $queryproceso=mysqli_query($conn,$InsertarProceso);
 $idprocesoproduccion= mysqli_insert_id($conn);
 $_SESSION['idpro']=$idprocesoproduccion;

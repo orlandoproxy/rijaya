@@ -169,9 +169,35 @@ foreach ($_REQUEST as $key => $value)
   }
   elseif ($value["tipo"]==5)
   {
+    $proceso=$value["proceso"];
+    $insertarterminado="INSERT INTO TERMINADO (Estatus,PROCESO_idPROCESO,ORDENPROCESO_idORDENPROCESO) VALUES('Iniciado','9','$idproceso')";
+    $queryterminado=mysqli_query($conn,$insertarterminado);
+    $idterminado=mysqli_insert_id($conn);
+    echo $insertarterminado;
+    echo '</br>';
+    echo '</br>';
+    foreach ($value as $pos => $lista)
+    {
+      if (count($lista)>2)
+      {
+        $idproducto=$lista["idProducto"];
+        $cantidad=$lista["cantidad"];
+        $nombre=$lista["nombre"];
+        $descripcion=$lista["color"];
+        $insertarlistaterminado="INSERT INTO LISTATERMINADO (PROCESO_idPROCESO,PRODUCTO_idPRODUCTO,Cantidad,Nombre,TERMINADO_idTERMINADO,Descripcion) VALUES('9','$idproducto','$cantidad','$nombre','$idterminado','$descripcion')";
+        echo $insertarlistaterminado;
+        echo '</br>';
+        $querylistaterminado=mysqli_query($conn,$insertarlistaterminado);
+      }
+      else
+      {
+        # code...
+      }
+    }
 
   }
 }
 
 mysqli_close($conn);
  ?>
+ <a href="../">Regresar</a>

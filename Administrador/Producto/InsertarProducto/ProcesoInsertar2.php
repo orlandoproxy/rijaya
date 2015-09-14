@@ -1,7 +1,8 @@
 <?php
+header("Content-Type: text/html;charset=utf-8");
 session_start();
 //print_r($_REQUEST);
-if (isset($_SESSION["idProdu"])) 
+if (isset($_SESSION["idProdu"]))
 {
 	include("../../../clases/conexion.php");
 
@@ -10,9 +11,9 @@ $contador=0;
 $idProducto=$_SESSION["idProdu"];
 $tama=count($_REQUEST);
 
-if (is_array($_REQUEST)==TRUE) 
+if (is_array($_REQUEST)==TRUE)
 {
-	foreach ($_REQUEST as $cadena[$contador] => $value) 
+	foreach ($_REQUEST as $cadena[$contador] => $value)
 	{
 		$cadena[$contador]=$value;
 		$contador=$contador+1;
@@ -27,7 +28,7 @@ $queryInsertarEnsamble=mysqli_query($conn,$InsertarEnsamble);
 $Referencia=mysqli_insert_id($conn);
 unset($cadena[0]);
 $cadena=array_values($cadena);
-while (count($cadena)>1) 
+while (count($cadena)>1)
 {
 
 	$Cantidad=$cadena[0];
@@ -40,13 +41,13 @@ while (count($cadena)>1)
 	echo $InsertarSubensamble;
 	$queryInsertarSubensamble=mysqli_query($conn,$InsertarSubensamble);
 	$idSubensamble=mysqli_insert_id($conn);
-	foreach ($Procesos as $key => $value) 
+	foreach ($Procesos as $key => $value)
 	{
 		$InsertarProceso="INSERT INTO SUBENSAMBLEPROCESO (SUBENSAMBLE_idSubensamble,PROCESO_idPROCESO) VALUES('$idSubensamble','$value')";
 		echo $InsertarProceso;
 		$querysubensableproceso=mysqli_query($conn,$InsertarProceso);
 	}
-	foreach ($Piezas as $key => $value) 
+	foreach ($Piezas as $key => $value)
 	{
 		$InsertarPieza="INSERT  INTO SUBENSAMBLEPIEZA (SUBENSAMBLE_idSubensamble,PIEZA_idPIEZA) VALUES('$idSubensamble','$value')";
 		echo $InsertarPieza;
