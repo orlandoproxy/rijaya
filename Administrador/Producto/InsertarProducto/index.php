@@ -1,4 +1,5 @@
 <?php
+include('../../clases/redireccion.php');
 include('../../../clases/conexion.php');
 $cadena="SELECT idCATEGORIA,Nombre FROM CATEGORIA";
 $Catego=mysqli_query($conn,$cadena);
@@ -17,7 +18,7 @@ $Catego=mysqli_query($conn,$cadena);
 	<div class="container">
 		<h1>Paso 1 de 3</h1>
 	<h2>Nuevo Producto</h2>
-	<div class="form-horizontal">  
+	<div class="form-horizontal">
 			<div class="form-group">
 				<label for="Clave" class="col-lg-2 control-label">Clave</label>
 				<div class="col-lg-10">
@@ -88,8 +89,8 @@ $Catego=mysqli_query($conn,$cadena);
 									<label> x </label>
 								</td>
 								<td>
-									<input class="form-control" type="text" id="Medida3" required placeholder="Medida 2">	
-								</td>	
+									<input class="form-control" type="text" id="Medida3" required placeholder="Medida 2">
+								</td>
 							</tr>
 						</table>
 			<div id="mensaje" ></div>

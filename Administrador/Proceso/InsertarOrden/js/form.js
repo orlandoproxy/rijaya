@@ -11,10 +11,14 @@ contenedor.removeChild(eliminar);
 
 function EliminarFila(tipo,proceso,id,tr)
 {
-var tipo = tipo;
-var proceso=proceso;
-var idtabla=id;
-var idtable = tipo+'_'+proceso+'_'+idtabla;
-var i = tr.parentNode.parentNode.rowIndex;
-document.getElementById(idtable).deleteRow(i);
+  var tr=tr;
+  var tipo = tipo;
+  var proceso=proceso;
+  var idtabla=id;
+  var idtable=tipo+'_'+proceso+'_'+idtabla;
+  var contenedor = document.getElementById(idtable);
+  var fila = document.getElementById(tr);
+  //contenedor.removeChild(fila);
+  alert(idtable);
+  alert(tr);
 }

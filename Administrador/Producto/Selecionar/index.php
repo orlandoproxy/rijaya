@@ -1,16 +1,17 @@
 <?php
+include('../../clases/redireccion.php');
 include '../../../clases/conexion.php';
 //session_start();
 
-if ( (isset($_SESSION['idProdu']) == FALSE)&&(isset($_GET['IDPro'])==FALSE) ) 
+if ( (isset($_SESSION['idProdu']) == FALSE)&&(isset($_GET['IDPro'])==FALSE) )
 {
 	header('Location:../../index.php');
 }
-elseif (isset($_SESSION['idProdu']) == TRUE) 
+elseif (isset($_SESSION['idProdu']) == TRUE)
 {
 	$idproducto= $_SESSION['idProdu'];
 }
-elseif (isset($_GET['IDPro'])== TRUE) 
+elseif (isset($_GET['IDPro'])== TRUE)
 {
 	$idproducto = $_GET['IDPro'];
 }
@@ -52,11 +53,11 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 		<td>Cantidad</td>
 		<td>Nombre</td>
 		<td>Medidas</td>
-		<td>Material</td>		
+		<td>Material</td>
 					<?php
 					$sqlConsulPro="SELECT Nombre FROM `PROCESO` WHERE AREAPROCESO_idAREAPROCESO='1'";
-					$respuestaProceso=mysqli_query($conn,$sqlConsulPro);					
-					while ($filaProc=mysqli_fetch_array($respuestaProceso)) 
+					$respuestaProceso=mysqli_query($conn,$sqlConsulPro);
+					while ($filaProc=mysqli_fetch_array($respuestaProceso))
 					{
 						echo '<td>';
 						echo $filaProc['Nombre'];
@@ -64,11 +65,11 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 					}
 					?>
 				</tr>
-			
-				<?php 
+
+				<?php
 				$sqlproducPieza="SELECT `PIEZA_idPIEZA`, `Cantidad` FROM PRODUCTOPIEZA WHERE PRODUCTO_idPRODUCTO='$idproducto'";
 				$sqlconsulta4 = mysqli_query($conn,$sqlproducPieza);
-				while ($filaProduPieza=mysqli_fetch_array($sqlconsulta4)) 
+				while ($filaProduPieza=mysqli_fetch_array($sqlconsulta4))
 				{
 					echo '<tr>';
 					echo '<td>';
@@ -78,7 +79,7 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 					$sqlPieza="SELECT * FROM PIEZA WHERE idPIEZA = '$idPieza'";
 
 					$sqlconsulta5=mysqli_query($conn,$sqlPieza);
-					while ($filaPieza=mysqli_fetch_array($sqlconsulta5)) 
+					while ($filaPieza=mysqli_fetch_array($sqlconsulta5))
 					{
 						echo '<td>';
 						echo $filaPieza['Nombre'];
@@ -96,14 +97,14 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 						$sqlProcesoBu="SELECT idPROCESO FROM PROCESO WHERE AREAPROCESO_idAREAPROCESO='1'";
 						$sqlconsulta7=mysqli_query($conn,$sqlProcesoBu);
 
-						while ($filaProceso=mysqli_fetch_array($sqlconsulta7)) 
+						while ($filaProceso=mysqli_fetch_array($sqlconsulta7))
 						{
 
 							$idproceso=$filaProceso['idPROCESO'];
 							$sqlbusqueda="SELECT * FROM PIEZAPROCESO WHERE PROCESO_idPROCESO='$idproceso' && PIEZA_idPIEZA='$idPieza'";
 							$sqlconsulta8=mysqli_query($conn,$sqlbusqueda);
-							
-							if (mysqli_num_rows($sqlconsulta8)>0) 
+
+							if (mysqli_num_rows($sqlconsulta8)>0)
 							{
 								//tenemos coincidencias
 								echo '<td>';
@@ -126,23 +127,23 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 					echo '</tr>';
 				}
 				?>
-				
+
 </table>
 <h2>Ensamble General</h2>
 <div>
-	<?php 
+	<?php
 	$ConsultaEnsamble="SELECT *FROM ENSAMBLE WHERE PRODUCTO_idPRODUCTO='$idproducto'";
 	$queryEnsamble=mysqli_query($conn,$ConsultaEnsamble);
 	$fila=mysqli_fetch_assoc($queryEnsamble);
 	?>
 	<label>Nombre:<?php echo $fila['Nombre'];  ?></label>
 	<h2>Datos Subensamble</h2>
-	<?php 
+	<?php
 	$idEnsamble=$fila['idENSAMBLE'];
 	$ConsultaSubensamble="SELECT * FROM SUBENSAMBLE WHERE ENSAMBLE_idENSAMBLE='$idEnsamble' ";
 	$querySubensamble=mysqli_query($conn,$ConsultaSubensamble);
 
-	while ($resul=mysqli_fetch_array($querySubensamble)) 
+	while ($resul=mysqli_fetch_array($querySubensamble))
 	{
 		echo '<h4>Nombre: '.$resul['Nombre'].'</h4>';
 		echo '<br>';
@@ -160,7 +161,7 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 				</tr>
 			</thead>
 			<tbody>';
-		while ($sub=mysqli_fetch_array($querySubPiezas)) 
+		while ($sub=mysqli_fetch_array($querySubPiezas))
 		{
 			echo '<tr>';
 			echo '<td>'.$sub['Nombre'].'</td>';
@@ -170,9 +171,9 @@ $respuestaProdu= mysqli_fetch_assoc($respuesta);
 		echo '</table';
 	}
 	?>
-			
-		
-	
+
+
+
 </div>
 </div>
 <a class="btn btn-success" href="../index.php">Continuar</a>

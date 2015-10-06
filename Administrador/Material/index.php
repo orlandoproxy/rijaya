@@ -19,6 +19,7 @@
             <li class="active"><a href="#">Material</a></li>
             <li><a href="../Personal">Personal</a></li>
             <li><a href="../Roles">Roles</a></li>
+            <li><a href="../Reportes">Reportes</a></li>
             <li><a href="../Configuracion">Configuracion</a></li>
             <li><a href="../clases/salir.php">Salir</a></li>
 

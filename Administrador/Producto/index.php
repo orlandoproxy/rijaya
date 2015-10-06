@@ -1,6 +1,6 @@
 <?php
 
-//include('../../clases/redireccion.php');
+include('../clases/redireccion.php');
 ?>
 <html>
 <head>
@@ -23,6 +23,7 @@
             <li ><a href="../Material">Material</a></li>
             <li><a href="../Personal">Personal</a></li>
             <li><a href="../Roles">Roles</a></li>
+            <li><a href="../Reportes">Reportes</a></li>
             <li><a href="../Configuracion">Configuracion</a></li>
             <li><a href="../../clases/cerrar.php">Salir</a></li>
 
@@ -67,6 +68,17 @@
     </tr>
     </thead>
     <tbody id="myDiv">
+      <?php
+      include('../../clases/conexion.php');
+      $selecionarProducto="SELECT PRODUCTO.idPRODUCTO, PRODUCTO.Clave, PRODUCTO.Nombre, PRODUCTO.Tipo, PRODUCTO.Estatus, PRODUCTO.Descripcion, PRODUCTO.Medida1, PRODUCTO.Medida2, PRODUCTO.Medida3, CATEGORIA.Nombre AS NombreCatego FROM PRODUCTO INNER JOIN CATEGORIA ON PRODUCTO.CATEGORIA_idCATEGORIA=CATEGORIA.idCATEGORIA WHERE PRODUCTO.Tipo='Linea'";
+      $queryProducto=mysqli_query($conn,$selecionarProducto);
+      while ($filaProducto=mysqli_fetch_array($queryProducto))
+      {
+      ///
+
+      }
+      mysqli_close($conn);
+       ?>
     </div>
 </div>
 </div>

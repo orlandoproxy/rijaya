@@ -3,11 +3,11 @@ include('../../../clases/conexion.php');
 session_start();
 $idordenproceso = $_POST['elegido'];
 $proceso = $_SESSION['idproceso'];
-$selecmaquinado="SELECT * FROM MAQUINADO WHERE ORDENPROCESO_idORDENPROCESO=$idordenproceso AND PROCESO_idPROCESO=$proceso AND  Estatus='Iniciado'";
+$selecmaquinado="SELECT LAVADOSACUDIDO.idLAVADOSACUDIDO, LAVADOSACUDIDO.Estatus, LISTALAVADOSACUDIDO.NombreSacudidoLavado, LISTALAVADOSACUDIDO.Cantidad FROM LAVADOSACUDIDO INNER JOIN LISTALAVADOSACUDIDO ON LAVADOSACUDIDO.idLAVADOSACUDIDO=LISTALAVADOSACUDIDO.idLISTALAVADOSACUDIDO WHERE LAVADOSACUDIDO.ORDENPROCESO_idORDENPROCESO=$idordenproceso AND LAVADOSACUDIDO.PROCESO_idPROCESO=$proceso AND  LAVADOSACUDIDO.Estatus='Iniciado'";
 //echo $selecmaquinado;
 $querymaquinado=mysqli_query($conn,$selecmaquinado);
 echo '<div class="row">';
-  echo '<div class="col-md-4" style="overflow:scroll; height:400px;">';
+  echo '<div class="col-md-4">';
   while ($filamaquinado=mysqli_fetch_array($querymaquinado))
   {
     echo '<table class="table">';
@@ -16,9 +16,10 @@ echo '<div class="row">';
     echo '</thead>';
     echo '<tbody>';
     echo '<tr>';
-    echo '<td>'.$filamaquinado['Nombre'].'</td>';
+    echo '<td>'.$filamaquinado['Cantidad'].'</td>';
+    echo '<td>'.$filamaquinado['NombreSacudidoLavado'].'</td>';
     echo '<td>'.$filamaquinado['Estatus'].'</td>';
-    echo '<td><a class="btn btn-primary" href="javascript:Maquinado('.$filamaquinado['idMAQUINADO'].');">Visualizar</a></td>';
+    echo '<td><a class="btn btn-primary" href="javascript:Ensamble('.$filamaquinado['idLAVADOSACUDIDO'].');">Visualizar</a></td>';
 
     echo '</tr>';
     echo '</tbody>';

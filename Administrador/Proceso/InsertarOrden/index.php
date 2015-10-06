@@ -1,5 +1,5 @@
 <?php
-
+include('../../clases/redireccion.php');
 ?>
 <!DOCTYPE html>
 <html lang="esp">

@@ -1,4 +1,5 @@
 <?php
+include('../../clases/redireccion.php');
 include('../../../clases/conexion.php');
 
 $idordenproceso=$_GET["id"];

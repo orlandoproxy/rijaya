@@ -11,41 +11,44 @@ function AgregarManual()
 					data: 'usu='+usu+'&pass='+pass,
 					success: function(valor)
 					{
-						if (valor == 1) 
+						if (valor == 1)
 							{
 								$('#mensaje').addClass('error').html('El usuario ingresado no existe o fue dado de baja en el sistema').show(300).delay(3000).hide(300);
+								$('#usuario').val("");
+								$('#pass').val("");
 								return false;
 							}
 							else if (valor== 2)
 								{
 									$('#mensaje').addClass('error').html('La Contraseña es Incorrecta').show(300).delay(3000).hide(300);
+									$('#pass').val("");
 									return false;
 								}
-							else if (valor == 3) 
+							else if (valor == 3)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Administrador/index.php';
 									return false;
 								}
-							else if (valor == 4) 
+							else if (valor == 4)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'JefeProduc/index.php';
 									return false;
 								}
-							else if (valor == 5) 
+							else if (valor == 5)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Contador/index.php';
 									return false;
 								}
-							else if (valor == 6) 
+							else if (valor == 6)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Vendedor/index.php';
 									return false;
 								}
-							else if (valor == 7) 
+							else if (valor == 7)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Operadores/index.php';
@@ -74,11 +77,11 @@ function Lector(key)
     else
     {unicode=key.keyCode;}
     //alert(unicode); // Para saber que codigo de tecla presiono , descomentar
-    
+
     if (unicode == 13)
     {
         //alert(lectura);
-        if (lectura.length>0) 
+        if (lectura.length>0)
         {
         	$.ajax(
         		{
@@ -87,49 +90,53 @@ function Lector(key)
         			data: 'escaneo='+lectura,
         			success: function(valor)
 					{
-						if (valor == 1) 
+						if (valor == 1)
 							{
 								$('#mensaje').addClass('error').html('El usuario ingresado no existe').show(300).delay(3000).hide(300);
+								('#lector').val("");
 								return false;
+
 							}
 							else if (valor== 2)
 								{
 									$('#mensaje').addClass('error').html('La Contraseña es Incorrecta').show(300).delay(3000).hide(300);
+									$('#lector').val("");
 									return false;
 								}
-							else if (valor == 3) 
+							else if (valor == 3)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Administrador/index.php';
 									return false;
 								}
-							else if (valor == 4) 
+							else if (valor == 4)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'JefeProduc/index.php';
 									return false;
 								}
-							else if (valor == 5) 
+							else if (valor == 5)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Contador/index.php';
 									return false;
 								}
-							else if (valor == 6) 
+							else if (valor == 6)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Vendedor/index.php';
 									return false;
 								}
-							else if (valor == 7) 
+							else if (valor == 7)
 								{
 									//$('#mensaje').addClass('error').html('redireccion').show(300).delay(3000).hide(300);
 									document.location.href = 'Operadores/index.php';
 									return false;
 								}
-							else if (valor == 0) 
+							else if (valor == 0)
 								{
 									$('#mensaje').addClass('error').html('Codigo Incorecto').show(300).delay(3000).hide(300);
+										$('#lector').val("");
 									return false;
 								}
 					}
@@ -139,6 +146,7 @@ function Lector(key)
         else
         {
         	$('#mensaje').addClass('error').html('Escane un codigo valido').show(300).delay(3000).hide(300);
+						$('#lector').val("");
         }
 
     }
@@ -146,14 +154,13 @@ function Lector(key)
 
 function Automatico()
 {
-	document.getElementById('tipo').innerHTML = 
+	document.getElementById('tipo').innerHTML =
 	"<input type='text' id='lector' class='form-control' onkeypress='Lector(event);' placeholder='Escane su codigo' required='' autofocus=''>";
 }
 function Manual()
 {
-	document.getElementById('tipo').innerHTML = 
+	document.getElementById('tipo').innerHTML =
 	"<input type='text' id='usuario' class='form-control' placeholder='Usuario' required='' autofocus=''>"
 	+" <input type='password' id='pass' class='form-control' placeholder='Contraseña' required=''>"
 	+" <a class='btn btn-lg btn-primary btn-block'  id='ingresar' href='JavaScript:AgregarManual();'>Ingresar </a>";
 }
-	

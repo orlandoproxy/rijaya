@@ -19,6 +19,7 @@ include("../../clases/conexion.php");
 	<title>Maquinado</title>
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/carga.js"></script>
 </head>
 <body>
@@ -66,7 +67,7 @@ include("../../clases/conexion.php");
 			}
 			 ?>
 		</select>
-		<div id="contenido">
+		<div id="contenido" >
 			<input class="btn btn-primary" id="boton1" type="button" value="Inicio" onclick="boton(this.name,'boton1,boton2,boton3')" />
 			<d>
 			<input class="btn btn-warning" id="boton2" type="button" value="Pausa" onclick="boton(this.name,'boton1,boton2,boton3')"/>
